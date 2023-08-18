@@ -1,0 +1,16 @@
+.container{
+
+    align-items: center;
+}
+
+.title{
+    font-size: 128px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.subtitle{
+    font-size: 128px;
+    color: #ffffff;
+    font-weight: lighter;
+}

@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+.border{
+  border: solid 5px #48a73b;
+  
+}
+
+.anchor{
+  border: 3px solid #00F600;
+  border-radius: 80px;
+  display: flex;
+  background-color: #005E00;
+  text-decoration: none;  
+  width: 810px;
+  height: 310px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.text{
+  font-size: 128px;
+  font-weight: bold;
+  color: white;
+
+}

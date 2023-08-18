@@ -12,7 +12,7 @@ function App() {
         <Company></Company>
           <div className="text">
             <a href="#" className='anchor'><p className='text'>Pormade</p></a>
-            <a href="#" className='anchor'><p className='text'>DRZ.</p></a>
+            <a href="#" className='anchor'><p className='text'>DRZ</p></a>
           </div>
           <img class="logo-img" src='https://cdn.discordapp.com/attachments/1141361461516587098/1141400872669167626/logo_pormade_render_1.png'></img>
       </header>

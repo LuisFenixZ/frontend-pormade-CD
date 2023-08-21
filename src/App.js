@@ -1,5 +1,5 @@
 import './App.css';
-import Payment from './pages/mob-pixqrcode/payment';
+import Idset from './pages/mob-id-set/id-set'
 
 
 
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header border">
           <div>
-          <Payment></Payment>
+          <Idset></Idset>
           </div>
       </header>
     </div>

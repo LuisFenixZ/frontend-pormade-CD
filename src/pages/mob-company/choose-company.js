@@ -1,6 +1,6 @@
 import React from "react";
 import './choose-company.css';
-import Cantina from "../../img-source/logo-cantina/Cantina Logo White WLP.png";
+import Cantina from "../../img-source/logo-cantina/Cantina Logo PetimColor WLP 1.png";
 
 
 const Company =() => {

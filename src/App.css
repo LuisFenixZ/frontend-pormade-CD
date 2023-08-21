@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .App {
   display: block;
 }
@@ -7,6 +8,11 @@
   background-color: #151414;
   min-height: 100vh;
 
+=======
+.App-header {
+  background-color: #151414;
+  min-height: 100vh;
+>>>>>>> 86b372ad2ad4d4a05b7fd84bd52cfd8ef50017ed
   flex-direction: column;
   align-items: center;
   justify-content: center;

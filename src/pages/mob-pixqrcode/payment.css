@@ -1,18 +1,15 @@
 .container{
-    text-align: center;
-    display: flexbox;
-    align-content: center;
-    justify-content: center;
+    display: grid;
 }
 
 .title{
-    font-size: 70%;
+    font-size: 40px;
     margin: 0.5%;
 
 }
 
 .info_text{
-    font-size: 50%;
+    font-size: 30px;
     margin: 0.5%;
 }
 
@@ -31,5 +28,10 @@
     align-items: center;
     justify-content: center;
 
+}
+.home{
+    display: flex;
+    width: 25px;
+    height: 25px;
 
 }

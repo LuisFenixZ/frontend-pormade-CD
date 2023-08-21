@@ -1,5 +1,6 @@
 import './App.css';
-import Payment from './pages/mob-pixqrcode/payment';
+import Company from './pages/mob-company/choose-company';
+
 
 
 
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header border">
           <div className="text">
-          <Payment></Payment>
+          <Company></Company>
           </div>
       </header>
     </div>

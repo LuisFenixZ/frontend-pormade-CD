@@ -10,6 +10,7 @@ const Payment =() => {
                 <p className="info_text">Crachá:</p>
                 <p className="info_text">Valor: R$</p>
                 <img src= {QrCodePix} className="pix_qrcode"></img>
+                <button className="button_confirm">Confirmar</button>
 
         </div>
     );

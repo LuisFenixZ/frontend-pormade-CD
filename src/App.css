@@ -1,5 +1,7 @@
 .App {
   display: flex;
+  max-width: 1200px;
+  max-height: 2000px;
 }
 
 

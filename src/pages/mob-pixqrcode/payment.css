@@ -1,19 +1,35 @@
 .container{
     text-align: center;
+    display: flexbox;
+    align-content: center;
+    justify-content: center;
 }
 
 .title{
-    font-size: 750%;
+    font-size: 70%;
+    margin: 0.5%;
 
 }
 
 .info_text{
-    font-size: 500%;
-
+    font-size: 50%;
+    margin: 0.5%;
 }
 
 .pix_qrcode{
     align-content: center;
-    width: 85%;
-    height: 85%;
+    width: 75%;
+    height: 75%;
+}
+
+.button_confirm{
+    border: 3px solid #00F600;
+    border-radius: 80px;
+    display: flex;
+    background-color: #005E00;
+    text-decoration: none;  
+    align-items: center;
+    justify-content: center;
+
+
 }

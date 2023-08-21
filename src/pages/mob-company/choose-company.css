@@ -1,14 +1,22 @@
 .container{
-    align-items: center;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  background-color: #151414;
+  align-items: center;
 }
 
 .title{
+    margin-left: 22%;
+    margin-right: 22%;
     font-size: 128px;
     color: #ffffff;
     font-weight: bold;
 }
 
 .subtitle{
+    margin-left: 22%;
+    margin-right: 22%;
     font-size: 128px;
     color: #ffffff;
     font-weight: lighter;
@@ -36,5 +44,5 @@
   }
 
   .img-logo{
-    display: block;
+   align-items: center;
   }

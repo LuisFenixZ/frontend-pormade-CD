@@ -1,0 +1,19 @@
+.container{
+    text-align: center;
+}
+
+.title{
+    font-size: 750%;
+
+}
+
+.info_text{
+    font-size: 500%;
+
+}
+
+.pix_qrcode{
+    align-content: center;
+    width: 840px;
+    height: 840px;
+}

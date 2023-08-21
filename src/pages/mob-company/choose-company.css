@@ -1,0 +1,37 @@
+.container{
+
+    align-items: center;
+}
+
+.title{
+    font-size: 128px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.subtitle{
+    font-size: 128px;
+    color: #ffffff;
+    font-weight: lighter;
+}
+
+.anchor{
+    border: 3px solid #00F600;
+    border-radius: 80px;
+    display: flex;
+    background-color: #005E00;
+    text-decoration: none;  
+    width: 810px;
+    height: 310px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .text{
+    font-size: 128px;
+    font-weight: bold;
+    color: white;
+  
+  }

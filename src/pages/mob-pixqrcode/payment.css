@@ -17,3 +17,9 @@
     width: 85%;
     height: 85%;
 }
+
+.home{
+    display: flex;
+    width: 138px;
+    height: 138px;
+}

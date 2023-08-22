@@ -1,53 +1,52 @@
 .container{
-    width: 30%;
-    display: flex;
-    align-items: center;
+    width: 90vw;
     margin: auto;
     flex-direction: column;
-    justify-content: space-between;
     border: solid 2px #48a73b;
     border-radius: 10px;
     padding: 2%;
 }
 
-.title{
-    font-size: 40px;
+.cad__h2__title{
+    font-size: 7vw;
     margin: 0.5%;
 
 }
 
 .info_text{
-    font-size: 30px;
-    margin: 0.5%;
+    font-size: 6vw;
+    margin: 1%;
     color: white;
 }
 
 .pix_qrcode{
-    margin-top: 2%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     align-content: center;
-    width: 80%;
-    height: 80%;
+    width: 80vw;
 }
 
 .button_confirm{
     margin-top: 2%;
+    margin-bottom: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 6vw;
     background-color: rgb(0, 94, 0);
     border: 1px solid rgb(1, 255, 1);
     border-radius: 15px;
-    width: 150px;
-    height: 50px;
+    width: 70vw;
+    height: 20vw;
     margin-left: auto;
     margin-right: auto;
 }
 
 .home{
     display: flex;
-    width: 60px;
-    height: 60px;
+    width: 10%;
+    height: 10%;
+    margin-top: 2%;
+    margin-left: 2%;
 
 }

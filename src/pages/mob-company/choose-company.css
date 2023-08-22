@@ -1,8 +1,8 @@
-.container-box{
+.container{
+  display: grid;
+  place-items: center;
   background-color: #151414;
   align-items: center;
-
-
 }
 
 .title{
@@ -16,7 +16,7 @@
 .subtitle{
     margin-left: 22%;
     margin-right: 22%;
-    font-size: 98px;
+    font-size: 128px;
     color: #ffffff;
     font-weight: lighter;
 }
@@ -43,7 +43,5 @@
   }
 
   .img-logo{
-    align-items: center;
-    width: 500px;
-    height: 500px;
+   align-items: center;
   }

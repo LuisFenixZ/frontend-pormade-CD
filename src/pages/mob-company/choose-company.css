@@ -1,22 +1,23 @@
-.container{
+.container-box{
   display: grid;
   place-items: center;
   background-color: #151414;
   align-items: center;
+  border: solid 2px #00F600;
+  text-align: center;
 }
 
 .title{
-    margin-left: 22%;
-    margin-right: 22%;
+    margin-top: 8%;
+    margin-bottom: 8%;
     font-size: 128px;
     color: #ffffff;
     font-weight: bold;
 }
 
 .subtitle{
-    margin-left: 22%;
-    margin-right: 22%;
-    font-size: 128px;
+    margin-bottom: 8%;
+    font-size: 98px;
     color: #ffffff;
     font-weight: lighter;
 }
@@ -29,7 +30,7 @@
     text-decoration: none;  
     width: 810px;
     height: 310px;
-    margin-bottom: 50px;
+    margin-bottom: 5%;
     align-items: center;
     justify-content: center;
     
@@ -44,4 +45,7 @@
 
   .img-logo{
    align-items: center;
+   width: 500px;
+   height: 500px;
+   margin-bottom: 4%;
   }

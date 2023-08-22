@@ -4,12 +4,13 @@ import Company from './pages/mob-company/choose-company';
 
 
 
+
 function App() {
 // eslint-disable-next-line no-restricted-globals
   return (
     <div className="App">
       <header className="App-header border">
-          <div className="text">
+          <div>
           <Company></Company>
           </div>
       </header>
@@ -18,3 +19,4 @@ function App() {
 }
 
 export default App;
+

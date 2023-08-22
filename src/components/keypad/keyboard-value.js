@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import Numpad from '../keypad/numpad';
 import './numpad.css'
 
-class Keypad extends React.Component {
+class KeypadValue extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: '0'
+            value: 'R$ '
         };
         this.changeValue = this.changeValue.bind(this);
     }
@@ -18,7 +18,7 @@ class Keypad extends React.Component {
         if (numText === '<') {
             value = value.slice(0, -1);
             if (!value) {
-                value = '0';
+                value = 'R$ ';
             }
         } else if (numText === '.') {
             if (value.indexOf('.') === -1) {
@@ -51,6 +51,6 @@ class Keypad extends React.Component {
     }
 }
 
-render(<Keypad />, document.getElementById("root"));
+render(<KeypadValue />, document.getElementById("root"));
 
-export default Keypad;
+export default KeypadValue;

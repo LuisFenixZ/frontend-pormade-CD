@@ -4,6 +4,8 @@ import './index.css';
 import Login from "./pages/login-page/Login";
 import Payment from './pages/mob-pixqrcode/payment';
 import Company from "./pages/mob-company/choose-company";
+import Idset from "./pages/mob-id-set/id-set";
+import Idvalue from "./pages/mob-value-set/value-set"
 
 
 
@@ -19,6 +21,10 @@ function App() {
         <Route path="/company" element={<Company/>}></Route>
 
         <Route path="/payment" element={<Payment/>}></Route>
+
+        <Route path="/idset" element={<Idset/>}></Route>
+
+        <Route path="/idvalue" element={<Idvalue/>}></Route>
 
       </Routes>
     </Router>

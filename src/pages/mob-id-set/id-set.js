@@ -14,6 +14,6 @@ const Idset =() => {
    
         </div>       
     )
-};
+};  
 
 export default Idset;

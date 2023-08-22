@@ -1,7 +1,6 @@
 .container{
   display: grid;
   place-items: center;
-  margin: 0;
   background-color: #151414;
   align-items: center;
 }

@@ -12,6 +12,6 @@ const Idset =() => {
                 <button type="button" className="button_confirm_numpad">Continuar</button>
         </div>       
     )
-};
+};  
 
 export default Idset;

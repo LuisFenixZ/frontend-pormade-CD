@@ -6,7 +6,7 @@ import Cantina from "../../img-source/logo-cantina/Cantina Logo PetimColor WLP 1
 
 const Company =() => {
     return(
-        <div className="container">
+        <div className="container-box">
         <h1 className="title">Cantina da 
             Confiança</h1>
             <h3 className="subtitle">Selecione a empresa</h3>

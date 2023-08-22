@@ -2,7 +2,7 @@ import React from "react";
 import "./choice.css";
 import Cantina from "../../img-source/logo-cantina/Cantina Logo PetimColor WLP 1.png";
 
-const Choice =() => {
+const Admin =() => {
     return(
         
             <div className="container-choice">
@@ -15,4 +15,4 @@ const Choice =() => {
     );
 };
 
-export default Choice;  
+export default Admin;  

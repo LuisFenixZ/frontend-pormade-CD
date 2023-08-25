@@ -1,7 +1,6 @@
 import React from "react";
 import './choose-company.css';
 import Cantina from "../../img-source/logo-cantina/Cantina Logo PetimColor WLP 1.png";
-import Clock from "./clock";
 import { Link } from "react-router-dom";
 
 const Company =() => {

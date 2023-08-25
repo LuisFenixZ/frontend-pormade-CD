@@ -49,6 +49,7 @@
   .clock{
     color: #00F600;
     font-size: 100px;
+
   }
   
 
@@ -63,7 +64,8 @@
     align-items: center;
     justify-content: center; 
     margin-top: 12vw;
-    margin-bottom: 2vw;
+    margin-bottom: 11vw;
+
 }
 
 

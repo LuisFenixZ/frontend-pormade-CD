@@ -1,6 +1,7 @@
 import React from "react";
 import './payment.css';
 import QrCodePix from "../../../src/img-source/qrcode-pix/Qr Pix Cantina White.png";
+import { Link } from "react-router-dom";
 
 const Payment =() => {
     return(
@@ -13,10 +14,9 @@ const Payment =() => {
                         <p className="info_text">Valor: R$</p>
                         <img src= {QrCodePix} className="pix_qrcode"></img>
                 </div>
-                <button type="button"
-                className="button_confirm"
-                >Confirmar
-                </button>
+                <Link to="/welcome">
+                        <button type="button" className="button_confirm_numpad">Confirmar</button>
+                </Link>
 
         </div>
     );

@@ -4,10 +4,8 @@
 //     let hora = novaHora.getHours();
 //     let minuto = novaHora.getMinutes();
 //     let segundo = novaHora.getSeconds();
-   
 //     minuto = zero(minuto);
 //     segundo = zero(segundo);
-    
 //     document.getElementById('hora').textContent = hora+':'+minuto+':'+segundo;
 // },1000)
 

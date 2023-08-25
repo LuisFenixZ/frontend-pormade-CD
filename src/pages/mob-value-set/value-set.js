@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import KeypadValue from '../../components/keypad/keyboard-value';
+import { Link } from 'react-router-dom';
 
 const Idvalue =() => {
     return(
@@ -9,7 +10,9 @@ const Idvalue =() => {
                     <div className="container_numpad">
                     <KeypadValue/>
                     </div>
-                <button type="button" className="button_confirm_numpad">Continuar</button>
+                    <Link to="/payment">
+                        <button type="button" className="button_confirm_numpad">Continuar</button>
+                    </Link>
         </div>       
     )
 };

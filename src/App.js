@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './index.css';
 import Login from "./pages/login-page/Login";
 import Payment from './pages/mob-pixqrcode/payment';
-import Company from "./pages/mob-company/choose-company";
 import Admin from "./pages/choice/choice";
 import Report from "./pages/generate-report/generate-report";
 import Idset from "./pages/mob-id-set/id-set";
 import Idvalue from "./pages/mob-value-set/value-set"
+import Company from "./pages/mob-company/choose-company";
 
 
 
@@ -20,7 +20,7 @@ function App() {
 
         <Route path="/" element={<Login/>}></Route>
 
-        <Route path="/company" element={<Company/>}></Route>
+        <Route path="/welcome" element={<Company/>}></Route>
 
         <Route path="/payment" element={<Payment/>}></Route>
 

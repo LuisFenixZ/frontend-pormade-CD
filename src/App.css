@@ -1,0 +1,22 @@
+.App {
+  display: block;
+}
+
+
+.App-header {
+  background-color: #151414;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+}
+
+/*.border{
+  border: solid 5px #00F600;
+  padding: 1%;
+  
+}*/
+
+

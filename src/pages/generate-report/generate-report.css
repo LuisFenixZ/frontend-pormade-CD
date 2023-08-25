@@ -1,0 +1,42 @@
+.container-report{
+    background-color: #151414;
+    border: solid 2px #00F600;
+}
+
+.img-logo-report{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-report{
+    display: flex;
+    width: 138px;
+    height: 138px;
+    margin-top: 2%;
+    margin-left: 2%;
+
+}
+
+.anchor-report{
+    border: 3px solid #00F600;
+    border-radius: 80px;
+    display: inline-flex;
+    background-color: #005E00;
+    text-decoration: none;  
+    width: 40vh;
+    height: 10vh;
+    align-items: center;
+    justify-content: center; 
+    margin-left: 39%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
+.text{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}

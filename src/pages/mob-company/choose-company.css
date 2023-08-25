@@ -1,0 +1,74 @@
+.container-box{
+  background-color: #151414;
+  align-items: center;
+  border: solid 15px #00F600;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  animation: changeBorderColor 5s infinite;
+}
+
+.title{
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+    font-size: 128px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+  @keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+  .img-logo {
+    content: '';
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    animation: spinner 5s linear;
+    margin-bottom: 5vw;
+    
+  }
+
+  @keyframes changeBorderColor {
+    0% {
+      border-color: #00F600;
+    }
+    25% {
+      border-color: #000000;
+    }
+    50% {
+      border-color: #00F600;
+    }
+    75% {
+      border-color: #000000;
+    }
+
+  }
+
+  .clock{
+    color: #00F600;
+    font-size: 100px;
+  }
+  
+
+  .anchor{
+    border: 3px solid #00F600;
+    border-radius: 80px;
+    display: inline-flex;
+    background-color: #005E00;
+    text-decoration: none;  
+    width: 35vh;
+    height: 30vh;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 12vw;
+    margin-bottom: 2vw;
+}
+
+
+.text-play{
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+}

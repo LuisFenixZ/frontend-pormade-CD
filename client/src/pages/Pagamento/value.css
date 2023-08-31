@@ -55,7 +55,7 @@ main-return{
         border: 2px solid #3cb62c;
         border-radius: 10px;
         width: 80%;
-        height: 90px;
+        height: 70px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -101,10 +101,10 @@ main-return{
     }
 }
 
-@media (width: 1200px) {
+@media (max-width: 1200px) {
 
     .value__h1__title {
-        margin-top: 3%;
+        margin: 5.4%;
         text-align: center;
         color: white;
         padding: 1% 0 0 0;
@@ -112,7 +112,7 @@ main-return{
         font-family: var(--primary-font);
     }
     .payment-continue {
-        margin-top: 7%;
+        margin-top: 3%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -121,9 +121,9 @@ main-return{
         font-size: 4vh;
         background-color: #48a73b;
         border: 2px solid #3cb62c;
-        border-radius: 20px;
-        width: 70%;
-        height: 320px;
+        border-radius: 10px;
+        width: 50%;
+        height: 80px;
         margin-left: auto;
         margin-right: auto;
     }

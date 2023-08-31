@@ -68,25 +68,25 @@
     color: #D8D8D8;
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .numpad {
         margin-left: auto;
         margin-right: auto;
         display: grid;
         grid-gap: 15px;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        grid-template-rows: repeat(4, 250px);
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-rows: repeat(4, 120px);
         align-items: center;
         justify-content: center;
         flex-flow: row wrap;
         border-radius: 10px;
         color: #D8D8D8;
-        padding: 0 5% 3% 1%;
+        padding: 0 7% 3% 1%;
     }
 
     .btn {
-        width: 240px;
-        height: 240px;
+        width: 120px;
+        height: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -97,7 +97,7 @@
 
     .result{
         width: 93%;
-        height: 160px;
+        height: 100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -119,6 +119,20 @@
     .backspace{
         font-size: 4vh;
         color: red;
+    }
+    .display-keyboard{
+        margin-top: 3%;
+        width: 70%;
+        border: solid 1px #3cb62c;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        border: solid 1px #3cb62c;
+        border-radius: 10px;
+        color: #D8D8D8;
     }
 }
 

@@ -12,7 +12,7 @@ function KeypadValueComponent() {
     const history = useNavigate();
     
     const avancaPag = () => {
-        history('/confirmacao');
+        history('/forma-pagamento');
     }
 
     const changeValue = (numText) => {

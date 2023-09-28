@@ -7,38 +7,39 @@ import logoCantina from "../../img/Cantina Logo White WLP.png";
 import api from "../../services/api";
 
 const Login = () => {
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const history = useNavigate();
   const [authenticated, setAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      setAuthenticated(true);
-      history.replace("/admin");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const adminToken = localStorage.getItem("adminToken");
+  //   if (adminToken) {
+  //     setAuthenticated(true);
+  //     history.replace("/canteen");
+  //   }
+  // }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
 
-      console.log(login);
+      console.log(email);
       console.log(password);
 
-      const response = await api.post("/users/validate", {
-        login: login,
+      const response = await api.post("/canteen/admin", {
+        email: email,
         password: password,
       });
       console.log(response);
 
       
-      const { accessToken } = response.data;
+      const { adminToken } = response.data;
 
-      if (accessToken) {
+      if (adminToken) {
+        localStorage.setItem("adminToken", adminToken);
         setAuthenticated(true);
         console.log("Antes de navegar para /admin");
         history("/admin");
@@ -57,7 +58,7 @@ const Login = () => {
   };
 
   if (authenticated) {
-    return <div>Você está autenticado!</div>;
+    return <div>Você está autenticado!</div>
   }
 
   const togglePasswordVisibility = () => {
@@ -76,7 +77,7 @@ const Login = () => {
       
                 <p className="par">Usuário</p>
                 <div className="input">    
-                    <input type="text" name="emailLogin" value={login} onChange={e => setLogin(e.target.value)} className="inputCamp"  />
+                    <input type="text" name="emailLogin" value={email} onChange={e => setEmail(e.target.value)} className="inputCamp"  />
                 </div>
               
                 <p className="par">Senha</p>
@@ -100,48 +101,6 @@ const Login = () => {
                     className="button-submit"
                     >Entrar
                 </button>
-
-        {/* <h2 className="cad__h2__title">Cadastre-se</h2>
-        
-                <p className="par">Email</p>
-                <div className="input">    
-                    <input type="text" name="registerEmail" value={registerEmail} onChange={e => setRegisterEmail(e.target.value)} className="inputCamp"  />
-                </div>
-            
-                <p className="par">Senha</p>
-                <div className="select__options">
-                  
-                    <div className="select__options__category">
-
-                  <input type={showRegisterPassword ? "text" : "password"} name="registerPassword" 
-                    value={registerPassword} 
-                    onChange={e => setRegisterPassword(e.target.value)} 
-                    className="inputCamp"/>
-
-                  </div>
-                  <div> {showRegisterPassword ? (<div className="eyes-visibility" onClick={togglePasswordRegisterVisibility}><AiFillEyeInvisible
-                      className="eyesHide"/></div>) : (<div className="eyes-visibility" onClick={togglePasswordRegisterVisibility}><AiFillEye className="eyesShow" /></div>)}
-                </div>
-                </div>
-                
-
-                <p className="par">Nível de Acesso</p>
-                <div className="select__options">
-                  
-                  <div className="select__options_category">
-                    <select value={is_admin} onChange={(e) => setIs_Admin(e.target.value)} className="inputCamp">
-                      <option value={false}>Usuário Comum</option>
-                      <option value={true}>Usuário Administrador</option>
-                    </select>
-                  </div>
-                  
-                </div>
-                
-                <button type="button" onClick={handleRegister}
-                    className="button-submit"
-                    >Cadastrar
-                </button>    */}
-
     </form>
 );
 };

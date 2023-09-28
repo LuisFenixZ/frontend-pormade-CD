@@ -33,7 +33,6 @@ function IdentificacaoComponent() {
 
     return (
         <main>
-            <h1 className="payment__h1__title">Identificação</h1>
             <h2 className="payment__h2__title">Digite o Número do seu CPF:</h2>
             <div>
                 <div className='display-keyboard'>

@@ -97,7 +97,7 @@
 
     .result{
         width: 93%;
-        height: 100px;
+        height: 80px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -121,7 +121,7 @@
         color: red;
     }
     .display-keyboard{
-        margin-top: 3%;
+        margin-top: 2%;
         width: 70%;
         border: solid 1px #3cb62c;
         margin-left: auto;

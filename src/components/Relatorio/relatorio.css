@@ -4,6 +4,27 @@
     --primary-font: 'Montserrat', sans-serif;  
 }
 
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #48a73b;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #79ffa3;
+  border-radius: 20px;
+  /* border: 3px solid orange; */
+}
+
 .table_align{
     width: 100%;
 }
@@ -37,13 +58,23 @@
   }
   
   .table_style {
-    border: 1px solid #3cb62c; 
+    /* border: 1px solid #3cb62c;  */
     /* border-radius: 10px; */
-    width: 90%;
-    height: 500px;
+    width: 95%;
+    height: 650px;
     margin: 2% auto;
     overflow: auto; 
   }
-  
 
+  .table_head{
+    width: 95%;
+    height: 50px;
+    margin: 2% auto;
+    overflow: auto;
+  }
   
+/* .tr_title2{
+  width: 100%;
+  height: 2px;
+  background-color: rgb(41, 41, 41);
+} */

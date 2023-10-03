@@ -4,48 +4,52 @@ import 'pdfmake/build/vfs_fonts';
 import './relatorio.css';
 import api from '../../services/api';
 pdfMake.vfs = pdfMake.vfs;
+import Calendario from './Calendario'; // Importe o componente Calendario aqui
 
 
 const Relatorio = () => {
 
   const [purchases, setPurchases] = useState([]);
-  const [month, setMonth] = useState(9); 
-  const [year, setYear] = useState(2023); 
+  const [month, setMonth] = useState(new Date().getMonth() + 1); // Mês atual como valor padrão
+  const [year, setYear] = useState(new Date().getFullYear()); // Ano atual como valor padrão
 
   useEffect(() => {
     async function fetchData() {
       try {
-      
-        const adminToken = localStorage.getItem('adminToken');
-        console.log('Token de Administrador:', adminToken);
+        if (month !== null && year !== null) { // Verifica se month e year não são nulos
+          const adminToken = localStorage.getItem('adminToken');
+          console.log('Token de Administrador:', adminToken);
 
-        if (!adminToken) {
-          console.error('Token de administrador não encontrado.');
-          return;
+          if (!adminToken) {
+            console.error('Token de administrador não encontrado.');
+            return;
+          }
+
+          const headers = {
+            Authorization: `Bearer ${adminToken}`,
+          };
+
+          const response = await api.get(`/purchases/month=${month}/year=${year}`, {
+            headers,
+          });
+
+          const responseData = response.data;
+
+          if (responseData && responseData.purchases) {
+            setPurchases(responseData.purchases);
+          } else {
+            setPurchases([]);
+            console.warn('Nenhum registro encontrado para o mês selecionado.');
+          }
+
+          console.log(responseData);
         }
-
-        const headers = {
-          Authorization: `Bearer ${adminToken}`,
-        };
-
-        const response = await api.get(`/purchases/month=${month}/year=${year}`, {
-          headers,
-        });
-
-        const responseData = response.data;
-
-        if (responseData && responseData.purchases) {
-          setPurchases(responseData.purchases);
-        } else {
-          console.error('Dados de compras não encontrados na resposta.');
-        }
-
-        console.log(responseData);
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
+        setPurchases([]);
       }
     }
-
+    
     fetchData();
   }, [month, year]);
 
@@ -104,10 +108,38 @@ const Relatorio = () => {
     // pdfMake.createPdf(docDefinition).download('relatorio.pdf'); // Faz o download do PDF com o nome "relatorio.pdf"
   };
   
+  const handleCalendarChange = (selectedMonth, selectedYear) => {
+    setMonth(selectedMonth);
+    setYear(selectedYear);
+  };
+
+  const months = [
+    { value: 1, name: 'Janeiro' },
+    { value: 2, name: 'Fevereiro' },
+    { value: 3, name: 'Março' },
+    { value: 4, name: 'Abril' },
+    { value: 5, name: 'Maio' },
+    { value: 6, name: 'Junho' },
+    { value: 7, name: 'Julho' },
+    { value: 8, name: 'Agosto' },
+    { value: 9, name: 'Setembro' },
+    { value: 10, name: 'Outubro' },
+    { value: 11, name: 'Novembro' },
+    { value: 12, name: 'Dezembro' },
+  ];
 
   return (
-    <div>
-      <h1 className="h1_table_title">Registro de Compras</h1>
+    <div className='container2'>
+      <h1 className="h1_table_title">Registro de Compras do mês: {months.find(m => m.value === month)?.name}</h1>
+      <div className='date_select'>
+        <div>
+          <Calendario onChange={handleCalendarChange} />
+        </div>
+        <div>
+          <button onClick={generatePdf}>Gerar PDF</button>
+        </div>
+
+      </div>
       <div className='table_style'>
         <table className="table_align">
           <thead>
@@ -134,7 +166,6 @@ const Relatorio = () => {
           </tbody>
         </table>
       </div>
-      <button onClick={generatePdf}>Gerar PDF</button>
 
     </div>
   );

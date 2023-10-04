@@ -36,6 +36,11 @@
   padding: 2%;
 }
 
+table {
+  border-collapse: collapse;
+  /* border: none; */
+}
+
 .table_align{
     width: 100%;
 }
@@ -57,8 +62,9 @@
   .td_title5 {
     text-align: center;
     padding: 10px;
-    border: 1px solid rgb(41, 41, 41);
+    border-bottom: 1px solid rgb(41, 41, 41);
     color: white;
+    background-color: #0c0c0c;
   }
   
   .h1_table_title {
@@ -96,6 +102,20 @@
   height: 2px;
   background-color: rgb(41, 41, 41);
 } */
+
+/* Estilos para linhas pares */
+
+/* Estilos para linhas pares */
+.tr_title_even {
+  background-color: #000000; /* Cor de fundo para linhas pares */
+}
+
+/* Estilos para linhas ímpares */
+.tr_title_odd {
+  background-color: #0c0c0c; /* Cor de fundo para linhas ímpares */
+}
+
+
 
 .h1_style{
   color: white;

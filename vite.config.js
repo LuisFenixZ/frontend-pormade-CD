@@ -11,4 +11,7 @@ export default defineConfig({
     skipWaiting: true
     } })
   ],
+  server: {
+    host: '0.0.0.0',
+  }
 })

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+:root {
+    --primary-font: 'Montserrat', sans-serif;  
+}
+
+.month {
+    width: 50%;
+    height: 40px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(41 41 41 / var(--tw-bg-opacity));
+    border: solid 1px #3cb62c;
+    border-radius: 5px;
+    box-shadow: 0 0 25px 1px transparent;
+    transition: box-shadow .4s linear,border-color .4s linear;
+    outline: none;
+    padding: 9px;
+    color: #fff;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+.yyear {
+    width: 30%;
+    height: 40px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(41 41 41 / var(--tw-bg-opacity));
+    border: solid 1px #3cb62c;
+    border-radius: 5px;
+    box-shadow: 0 0 25px 1px transparent;
+    outline: none;
+    padding: 9px;
+    color: #fff;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+.align_calendar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h1_calendar {
+    margin-right: 5%;
+    color: white;
+    text-align: center;
+    font-family: var(--primary-font);
+    font-size: 2vh;
+}
+
+.h1_year {
+    margin-left: 10%;
+    margin-right: 5%;
+    color: white;
+    text-align: center;
+    font-family: var(--primary-font);
+    font-size: 2vh;
+}

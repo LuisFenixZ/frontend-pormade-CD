@@ -12,6 +12,7 @@ const Relatorio = () => {
   const [purchases, setPurchases] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth() + 1); // Mês atual como valor padrão
   const [year, setYear] = useState(new Date().getFullYear()); // Ano atual como valor padrão
+  const [totalValue, setTotalValue] = useState(0); // Adicione o estado para o valor total
 
   useEffect(() => {
     async function fetchData() {
@@ -37,9 +38,27 @@ const Relatorio = () => {
 
           if (responseData && responseData.purchases) {
             setPurchases(responseData.purchases);
+
+            const total = purchases.reduce((acc, purchase) => {
+              // Certifique-se de que purchase.value seja um número válido antes de somar
+              const purchaseValue = parseFloat(purchase.value.replace('$', ''));
+
+              // Verifique se purchaseValue é um número válido
+              if (!isNaN(purchaseValue)) {
+                return acc + purchaseValue;
+              } else {
+                return acc;
+              }
+            }, 0);
+            
+            console.log('Valor somado:', total); // Adicione esta linha para verificar o valor
+            
+            setTotalValue(total);
+
           } else {
             setPurchases([]);
             console.warn('Nenhum registro encontrado para o mês selecionado.');
+            setTotalValue(0);
           }
 
           console.log(responseData);
@@ -47,6 +66,7 @@ const Relatorio = () => {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
         setPurchases([]);
+        setTotalValue(0);
       }
     }
     
@@ -72,7 +92,7 @@ const Relatorio = () => {
     const docDefinition = {
       content: [
         {
-          text: 'Relatório de Compras',
+          text: `Relatório de Compras do mês de ${months.find(m => m.value === month)?.name}`,
           style: 'header',
         },
         {
@@ -136,7 +156,7 @@ const Relatorio = () => {
           <Calendario onChange={handleCalendarChange} />
         </div>
         <div>
-          <button onClick={generatePdf}>Gerar PDF</button>
+          <button className="relatorio" onClick={generatePdf}>Ver em PDF</button>
         </div>
 
       </div>
@@ -149,7 +169,7 @@ const Relatorio = () => {
               <th className="th_title">Nome da Colaborador</th>
               <th className="th_title">CPF do Colaborador</th>
               <th className="th_title">Crachá</th>
-              <th className="th_title">Data</th>
+              <th className="th_title">Data - Hora</th>
             </tr>
           </thead>
           <tbody>
@@ -164,6 +184,12 @@ const Relatorio = () => {
               </tr>
             ))}
           </tbody>
+          <thead>
+            <tr className='tr_title'>
+              <th className='th_title'>Total</th>
+              <th className='th_total'>{typeof totalValue === 'number' ? totalValue.toFixed(2) : 0}</th>
+            </tr>
+          </thead>
         </table>
       </div>
 

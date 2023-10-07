@@ -53,10 +53,14 @@ table {
     text-align: center;
     padding: 10px;
     font-family: var(--primary-font);
+    font-size: 2vh;
   }
 
 .th_total{
   background-color: #0c0c0c;
+  color: white;
+  font-family: var(--primary-font);
+  font-size: 2vh;
 }
   
   .td_title1,
@@ -69,6 +73,7 @@ table {
     border-bottom: 1px solid rgb(41, 41, 41);
     color: white;
     background-color: #0c0c0c;
+    font-family: var(--primary-font);
   }
   
   .h1_table_title {
@@ -141,4 +146,17 @@ table {
   font-family: var(--primary-font);
   font-size: 2vh;
   color: white;
+}
+
+.hr_line {
+  width: 70%;
+  height: 2px;
+  margin: 3% auto 0 auto ;
+  background-color: #3cb62c;
+  border: none;
+  box-shadow:
+    0 0 5px rgba(60, 182, 44, 0.5), /* Sombra central */
+    0 0 10px rgba(60, 182, 44, 0.3), /* Sombra mais forte */
+    0 0 15px rgba(60, 182, 44, 0.2), /* Sombra ainda mais forte */
+    0 0 20px rgba(60, 182, 44, 0.1); /* Sombra mais forte nos cantos */
 }

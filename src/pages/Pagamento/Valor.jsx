@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './value.css';
 import Numpad from '../../components/Keypad/numpad';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +8,16 @@ function formatCurrencyValue(value) {
 }
 
 function KeypadValueComponent() {
-    const [cents, setCents] = useState(0); 
+    const [cents, setCents] = useState(0);
     const history = useNavigate();
-    
+
+    // Esta função useEffect observará a variável 'cents' e atualizará o valor no localStorage sempre que 'cents' mudar.
+    useEffect(() => {
+        // Converte centavos em reais (R$) e armazena no localStorage
+        localStorage.setItem('value', (cents / 100).toFixed(2));
+        console.log('Valor no localStorage:', (cents / 100).toFixed(2));
+    }, [cents]);
+
     const avancaPag = () => {
         history('/forma-pagamento');
     }

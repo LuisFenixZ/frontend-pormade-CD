@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import './style-login.css';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import logoCantina from "../../img/Cantina Logo White WLP.png";
 import api from "../../services/api";
@@ -76,25 +76,30 @@ const Login = () => {
         <h2 className="login__h2__title">Faça o Login</h2>
       
                 <p className="par">Usuário</p>
-                <div className="input">    
+                <div className="divCamp">    
                     <input type="text" name="emailLogin" value={email} onChange={e => setEmail(e.target.value)} className="inputCamp"  />
                 </div>
               
                 <p className="par">Senha</p>
-                <div className="select__options">
+                <div className="divCampPassword">
                   
-                    <div className="select__options__category">
+                    <div className="">
 
                     <input type={showPassword ? "text" : "password"} name="passwordLogin" 
                     value={password} 
                     onChange={e => setPassword(e.target.value)} 
                     className="inputCamp"/>
-
                     </div>
 
-                    <div> {showPassword ? (<div  className="eyes-visibility" onClick={togglePasswordVisibility}><AiFillEyeInvisible
+                    <div className=""> {showPassword ? (<div onClick={togglePasswordVisibility}><AiOutlineEyeInvisible
+                      className="eyesHide"/></div>) : (<div onClick={togglePasswordVisibility}><AiOutlineEye className="eyesShow" /></div>)}
+                    </div>
+
+                    
+
+                    {/* <div> {showPassword ? (<div  className="eyes-visibility" onClick={togglePasswordVisibility}><AiFillEyeInvisible
                       className="eyesHide"/></div>) : (<div  className="eyes-visibility" onClick={togglePasswordVisibility}><AiFillEye className="eyesShow" /></div>)}
-                    </div>
+                    </div> */}
                 </div>
 
                 <button type="button" onClick={handleLogin}

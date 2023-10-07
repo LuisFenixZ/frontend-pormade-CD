@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import Numpad from '../../components/Keypad/numpad';
 import "./identificacao.css";
 import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 
 function IdentificacaoComponent() {
     const [cpf, setCPF] = useState('');
     const history = useNavigate();
-
-    const avancaValor = () => {
-        history('/valor');
-    }
 
     const changeCPF = (numText) => {
         let updatedCPF = cpf;
@@ -26,6 +23,53 @@ function IdentificacaoComponent() {
 
         setCPF(updatedCPF);
     };
+
+    const avancaValor = async () => {
+        try {
+            // Obtenha o token de administrador do localStorage
+            const adminToken = localStorage.getItem('adminToken');
+    
+            // Verifique se o token de administrador existe
+            if (!adminToken) {
+                console.error('Token de administrador não encontrado.');
+                return;
+            }
+    
+            // Faça a solicitação para verificar o CPF
+            const response = await api.get(`/customer/cpf=${cpf}`, {
+                headers: {
+                    Authorization: `Bearer ${adminToken}`,
+                },
+            });
+    
+            // Adicione este console.log para verificar os dados retornados
+            console.log('CPF:', cpf);
+            console.log('Dados retornados:', response.data);
+    
+            // Verifique se o CPF existe na resposta
+            if (response.data.customer) {
+                // Crie um objeto de dados do cliente que inclui o CPF
+                const customerData = {
+                    cpf: cpf,
+                    ...response.data.customer,
+                };
+    
+                // Armazene os dados do cliente no localStorage
+                console.log('Dados do cliente antes de armazenar:', customerData);
+                localStorage.setItem('customerData', JSON.stringify(customerData));
+
+    
+                // Redirecione para a próxima página (por exemplo, "/valor")
+                history('/valor');
+            } else {
+                // Trate o caso em que o CPF não existe
+                console.error('CPF não encontrado.');
+            }
+        } catch (error) {
+            console.error('Erro ao verificar CPF:', error);
+        }
+    };
+    
 
     const formattedCPF = cpf
         .replace(/\D/g, '')

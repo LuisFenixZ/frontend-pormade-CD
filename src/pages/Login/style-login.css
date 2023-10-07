@@ -16,15 +16,13 @@ form{
     margin-right: auto;
 }
 
-.inputCamp{
+.divCamp{
     width: 100%;
     height: 50px;
     display: flex;
-    flex-direction: column;
-    /* margin-top: -1%; */
+    flex-direction: row;
     margin-left: auto;
     margin-right: auto;
-    /* margin-bottom: 2%; */
     --tw-bg-opacity: 1;
     background-color: rgb(41 41 41 / var(--tw-bg-opacity));
     border: solid 2px #3cb62c;
@@ -32,9 +30,60 @@ form{
     box-shadow: 0 0 25px 1px transparent;
     transition: box-shadow .4s linear,border-color .4s linear;
     outline: none;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 3%;
     color: #fff;
+}
+
+.divCampPassword{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    --tw-bg-opacity: 1;
+    background-color: rgb(41 41 41 / var(--tw-bg-opacity));
+    border: solid 2px #3cb62c;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 1px transparent;
+    transition: box-shadow .4s linear,border-color .4s linear;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 3%;
+    color: #fff;
+    /* gap: 5%; */
+}
+
+.inputCamp {
+    --tw-bg-opacity: 1;
+    width: 100%;
+    height: 25px;
+    background-color: rgb(41 41 41 / var(--tw-bg-opacity));
+    border: none;
+    outline: none;
+    font-family: var(--primary-font);
+    font-size: 15px;
+    color: white;
+}
+
+.inputCamp:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px rgb(41 41 41 / var(--tw-bg-opacity)) inset;
+    box-shadow: 0 0 0 30px rgb(41 41 41 / var(--tw-bg-opacity)) inset;
+    border-color: #3cb62c; /* Cor da borda para realçar */
+    color: #fff; /* Cor do texto para o autofill */
+  }
+  
+  /* Estilize o texto dentro do campo de entrada no autofill */
+  .inputCamp:-webkit-autofill::first-line {
+    color: #fff; /* Cor do texto para o autofill */
+  }
+
+.align_input_eyes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .inputCamp .par{
@@ -53,7 +102,7 @@ form{
 }
 
 .eyes-visibility{
-    cursor: pointer;
+    /* cursor: pointer;
     float: right;
     width: 50px;
     height: 50px;
@@ -62,7 +111,8 @@ form{
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;  */
+    
 }
 
 .eyesShow {

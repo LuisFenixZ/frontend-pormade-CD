@@ -12,7 +12,7 @@ const Relatorio = () => {
   const [purchases, setPurchases] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth() + 1); // Mês atual como valor padrão
   const [year, setYear] = useState(new Date().getFullYear()); // Ano atual como valor padrão
-  const [income, setIncomeValue] = useState();
+  const [totalValue, setTotalValue] = useState(0); // Adicione o estado para o valor total
 
 
   async function fetchData() {
@@ -40,12 +40,12 @@ const Relatorio = () => {
   
         if (purchaseData && totalData) {
           setPurchases(purchaseData.purchases);
-          setIncomeValue(parseFloat(totalData.income));
+          setTotalValue(totalData.purchases);
   
-          console.log('Valor somado:', totalData.income);
+          console.log('Valor somado:', totalData.purchases);
         } else {
           setPurchases([]);
-          setIncomeValue();
+          setTotalValue([]);
           console.warn('Nenhum registro encontrado para o mês selecionado.');
         }
   
@@ -54,7 +54,7 @@ const Relatorio = () => {
     } catch (error) {
       console.error('Erro ao buscar dados:', error);
       setPurchases([]);
-      setIncomeValue();
+      setTotalValue([]);
     }
   }  
 
@@ -89,26 +89,15 @@ const Relatorio = () => {
             headerRows: 1,
             widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
             body: [
-              ['ID', 'Valor', 'Nome do Colaborador', 'CPF do Colaborador', 'Crachá', 'Data - Hora'],
+              ['ID', 'Valor', 'Nome do Colaborador', 'CPF do Colaborador', 'Crachá', 'Data'],
               ...purchases.map((purchase) => [
                 purchase.id,
-                purchase.value ? (
-                  parseFloat(purchase.value.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })
-                ) : '',
+                purchase.value,
                 purchase.customerName,
                 purchase.customerCpf,
                 purchase.customerBadge,
                 formatDateTime(purchase.date),
               ]),
-              ['Total', income ? (
-                income.toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })
-              ) : '', '', '', '', '']
             ],
           },
           layout: 'lightHorizontalLines',
@@ -176,14 +165,7 @@ const Relatorio = () => {
             {purchases.map((purchase) => (
               <tr className='tr_title2' key={purchase.id}>
                 <td className='td_title1'>{purchase.id}</td>
-                <td className='td_title2'>
-                  {purchase.value ? (
-                    parseFloat(purchase.value.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })
-                  ) : ''}
-                </td>
+                <td className='td_title2'>{purchase.value}</td>
                 <td className='td_title3'>{purchase.customerName}</td>
                 <td className='td_title4'>{purchase.customerCpf}</td>
                 <td className='td_title4'>{purchase.customerBadge}</td>
@@ -192,17 +174,10 @@ const Relatorio = () => {
             ))}
           </tbody>
           <thead>
-            <tr className='tr_title'>
-              <th className='th_title'>Total</th>
-              <th className='th_total'>
-              {income ? (
-                income.toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })
-              ) : ''}<hr className='hr_line'></hr>
-              </th>
-            </tr>
+              <tr className='tr_title' key={purchases.id}>
+                <th className='th_title'>Total</th>
+                <th className='th_total'>{purchases.income}</th>
+              </tr>
           </thead>
         </table>
       </div>
@@ -212,3 +187,59 @@ const Relatorio = () => {
 };
 
 export default Relatorio;
+
+
+import React, { useState } from 'react';
+import Numpad from '../../components/Keypad/numpad';
+import "./identificacao.css";
+import { useNavigate } from 'react-router-dom';
+
+function IdentificacaoComponent() {
+    const [cpf, setCPF] = useState('');
+    const history = useNavigate();
+
+    const avancaValor = () => {
+        history('/valor');
+    }
+
+    const changeCPF = (numText) => {
+        let updatedCPF = cpf;
+
+        if (numText === '<') {
+            updatedCPF = updatedCPF.slice(0, -1);
+        } else if (numText >= '0' && numText <= '9') {
+            updatedCPF += numText;
+        }
+
+        if (updatedCPF.length > 11) {
+            updatedCPF = updatedCPF.slice(0, 11);
+        }
+
+        setCPF(updatedCPF);
+    };
+
+    const formattedCPF = cpf
+        .replace(/\D/g, '')
+        .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+    return (
+        <main>
+            <h2 className="payment__h2__title">Digite o Número do seu CPF:</h2>
+            <div>
+                <div className='display-keyboard'>
+                    <div className='align-display'>
+                        <div className='result'>
+                            {formattedCPF || '0'}
+                        </div>
+                        <div>
+                            <Numpad onKeyPress={changeCPF} />
+                        </div>
+                    </div>
+                </div>
+                <button className="button-continue" onClick={avancaValor}>Continuar</button>
+            </div>
+        </main>
+    );
+}
+
+export default IdentificacaoComponent;

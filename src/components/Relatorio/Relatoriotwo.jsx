@@ -12,43 +12,51 @@ const Relatorio = () => {
   const [purchases, setPurchases] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth() + 1); // Mês atual como valor padrão
   const [year, setYear] = useState(new Date().getFullYear()); // Ano atual como valor padrão
+  const [income, setIncomeValue] = useState();
+
 
   async function fetchData() {
     try {
-      if (month !== null && year !== null) { // Verifica se month e year não são nulos
+      if (month !== null && year !== null) {
         const adminToken = localStorage.getItem('adminToken');
         console.log('Token de Administrador:', adminToken);
-
+  
         if (!adminToken) {
           console.error('Token de administrador não encontrado.');
           return;
         }
-
+  
         const headers = {
           Authorization: `Bearer ${adminToken}`,
         };
-
-        const response = await api.get(`/purchases/month=${month}/year=${year}`, {
-          headers,
-        });
-
-        const responseData = response.data;
-
-        if (responseData && responseData.purchases) {
-          setPurchases(responseData.purchases);
-
+  
+        const [purchaseResponse, totalResponse] = await Promise.all([
+          api.get(`/purchases/month=${month}/year=${year}`, { headers }),
+          api.get(`/purchases/income/month=${month}/year=${year}`, { headers }),
+        ]);
+  
+        const purchaseData = purchaseResponse.data;
+        const totalData = totalResponse.data;
+  
+        if (purchaseData && totalData) {
+          setPurchases(purchaseData.purchases);
+          setIncomeValue(parseFloat(totalData.income));
+  
+          console.log('Valor somado:', totalData.income);
         } else {
           setPurchases([]);
+          setIncomeValue();
           console.warn('Nenhum registro encontrado para o mês selecionado.');
         }
-
-        console.log(responseData);
+  
+        console.log(purchaseData, totalData);
       }
     } catch (error) {
       console.error('Erro ao buscar dados:', error);
       setPurchases([]);
+      setIncomeValue();
     }
-  }
+  }  
 
   useEffect(() => {
     fetchData();
@@ -95,8 +103,8 @@ const Relatorio = () => {
                 purchase.customerBadge,
                 formatDateTime(purchase.date),
               ]),
-              ['Total', purchases.length > 0 && purchases[0].totalValue ? (
-                purchases[0].totalValue.toLocaleString('pt-BR', {
+              ['Total', income ? (
+                income.toLocaleString('pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
                 })
@@ -186,21 +194,14 @@ const Relatorio = () => {
           </tbody>
           <thead>
             <tr className='tr_title_total'>
-            <th className='th_title'>Total</th>
+              <th className='th_title'>Total</th>
               <th className='th_total'>
-                {/* {purchases.length > 0 && purchases[0].totalValue ? (
-                  purchases[0].totalValue.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })
-                ) : ''} */}
-                {purchases.length > 0 && purchases[0].totalValue ? (
-                    parseFloat(purchases[0].totalValue.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })
-                  ) : ''}
-                <hr className='hr_line'></hr>
+              {income ? (
+                income.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })
+              ) : ''}<hr className='hr_line'></hr>
               </th>
               <th className='th_total'></th>
               <th className='th_total'></th>

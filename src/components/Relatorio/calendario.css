@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 :root {
-    --primary-font: 'Montserrat', sans-serif;  
+    --primary-font: 'Montserrat', sans-serif;
 }
 
 .month {
@@ -14,10 +14,10 @@
     box-shadow: 0 0 25px 1px transparent;
     transition: box-shadow .4s linear,border-color .4s linear;
     outline: none;
-    padding: 9px;
     color: #fff;
     text-align: center;
     font-family: var(--primary-font);
+    font-size: 2vh;
 }
 
 .yyear {
@@ -29,10 +29,12 @@
     border-radius: 5px;
     box-shadow: 0 0 25px 1px transparent;
     outline: none;
-    padding: 9px;
+    padding-right: 2%;
+    padding-left: 5%;
     color: #fff;
     text-align: center;
     font-family: var(--primary-font);
+    font-size: 2vh;
 }
 
 .align_calendar {
@@ -50,8 +52,8 @@
 }
 
 .h1_year {
-    margin-left: 10%;
-    margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 3%;
     color: white;
     text-align: center;
     font-family: var(--primary-font);

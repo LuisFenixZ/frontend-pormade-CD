@@ -118,11 +118,13 @@ form{
 .eyesShow {
     width: 30px;
     height: 30px;
+    color: white;
 }
 
 .eyesHide{
     width: 30px;
     height: 30px;
+    color: white;
 }
 
 .logoCantina{

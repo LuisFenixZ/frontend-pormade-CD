@@ -8,11 +8,6 @@ import "./navbar.css";
 function NavBar(props) {
   const history = useNavigate();
 
-  const mainMenu = () => {
-    history('/');
-  }
-  
-
   const [userInfoVisibility, setUserInfoVisibility] = useState(false);
 
 
@@ -29,7 +24,7 @@ function NavBar(props) {
   return (
     <nav className=''>
 
-      <img src={logoPormade} alt='logoPormade' className='nav-home-return' onClick={mainMenu}></img>
+      <img src={logoPormade} alt='logoPormade' className='nav-home-return'></img>
       <BiLogOut className="logout" onClick={handleLogout}>Sair</BiLogOut>
     </nav>
   );

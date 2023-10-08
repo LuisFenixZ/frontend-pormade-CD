@@ -81,25 +81,17 @@ const Login = () => {
                 </div>
               
                 <p className="par">Senha</p>
+                
                 <div className="divCampPassword">
-                  
-                    <div className="">
 
-                    <input type={showPassword ? "text" : "password"} name="passwordLogin" 
-                    value={password} 
-                    onChange={e => setPassword(e.target.value)} 
-                    className="inputCamp"/>
-                    </div>
+                  <input type={showPassword ? "text" : "password"} name="passwordLogin" 
+                  value={password} 
+                  onChange={e => setPassword(e.target.value)} 
+                  className="inputCamp"/>
 
-                    <div className=""> {showPassword ? (<div onClick={togglePasswordVisibility}><AiOutlineEyeInvisible
-                      className="eyesHide"/></div>) : (<div onClick={togglePasswordVisibility}><AiOutlineEye className="eyesShow" /></div>)}
-                    </div>
-
-                    
-
-                    {/* <div> {showPassword ? (<div  className="eyes-visibility" onClick={togglePasswordVisibility}><AiFillEyeInvisible
-                      className="eyesHide"/></div>) : (<div  className="eyes-visibility" onClick={togglePasswordVisibility}><AiFillEye className="eyesShow" /></div>)}
-                    </div> */}
+                  <div className=""> {showPassword ? (<div onClick={togglePasswordVisibility}><AiOutlineEyeInvisible
+                    className="eyesHide"/></div>) : (<div onClick={togglePasswordVisibility}><AiOutlineEye className="eyesShow" /></div>)}
+                  </div>
                 </div>
 
                 <button type="button" onClick={handleLogin}

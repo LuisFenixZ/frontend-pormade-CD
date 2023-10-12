@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import pdfMake from './pdfmakeConfig'; 
 import './relatorio.css';
 import api from '../../services/api';
 
 import Calendario from './Calendario'; // Importe o componente Calendario aqui
-
-pdfMake.fonts = {
-  Roboto: {
-    normal: 'Roboto-Regular.ttf',
-    bold: 'Roboto-Medium.ttf',
-    italics: 'Roboto-Italic.ttf',
-    bolditalics: 'Roboto-MediumItalic.ttf',
-  },
-};
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Relatorio = () => {
 

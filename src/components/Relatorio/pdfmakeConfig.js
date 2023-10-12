@@ -1,6 +1,16 @@
+// pdfMakeConfig.js
 import * as pdfMake from 'pdfmake/build/pdfmake';
-import 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
-export function configurePdfMake() {
-  pdfMake.vfs = pdfMake.createVfsFromDir('/path/to/fonts/folder');
-}
+pdfMake.fonts = {
+  Roboto: {
+    normal: 'Roboto-Regular.ttf',
+    bold: 'Roboto-Medium.ttf',
+    italics: 'Roboto-Italic.ttf',
+    bolditalics: 'Roboto-MediumItalic.ttf',
+  },
+};
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+export default pdfMake;

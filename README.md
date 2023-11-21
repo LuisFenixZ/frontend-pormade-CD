@@ -31,14 +31,14 @@ O projeto abrange as seguintes áreas:
 - Acompanhamento dos clientes internos para usar o novo sistema de pagamento e caixa.
 - Implementação de um sistema de gerência separando as cantinas por usuários únicos.
 
-### 4. Segurança e Privacidade
+### 3. Segurança e Privacidade
 
 - Uso do CPF para registro de compras, a fim de evitar possíveis fraudes.
 - O cadastro de acesso administrador será de controle totalmente interno, não sendo livre o cadastro de novas cantinas. 
 -Garantida a segurança dos dados dos clientes internos, incluindo informações de pagamento.
 - Conformidade com as regulamentações de proteção de dados, como o LGPD (Lei Geral de Proteção de Dados)
 
-### 5. Testes e Garantia de Qualidade
+### 4. Testes e Garantia de Qualidade
 
 - Realização de testes extensivos para garantir que o sistema esteja livre de erros e problemas.
 

@@ -1,5 +1,7 @@
  # Documentação do Projeto Cantina Pormade
 
+ # Documentação do Projeto Cantina Pormade
+
 ## Introdução
 
 Este documento descreve o projeto de digitalização da cantina, que tem como objetivo modernizar o processo de compra e principalmente de conferência das transações de nossas cantinas internas. A digitalização visa aumentar a eficiência, melhorar a precisão das transações e oferecer uma experiência mais conveniente aos clientes.
@@ -27,14 +29,15 @@ O projeto abrange as seguintes áreas:
 
 ### 2. Interface do Caixa
 
-- Substituição da folha de registro por terminais de pagamento digital.
+- Substituição da folha de papel por terminais de pagamento digital.
 - Acompanhamento dos clientes internos para usar o novo sistema de pagamento e caixa.
 - Implementação de um sistema de gerência separando as cantinas por usuários únicos.
 
 ### 4. Segurança e Privacidade
 
--Uso do CPF para registro de compras, a fim de evitar possíveis fraudes.
-- Garantir a segurança dos dados dos clientes internos, incluindo informações de pagamento.
+- Uso do CPF para registro de compras, a fim de evitar possíveis fraudes.
+- O cadastro de acesso administrador será de controle totalmente interno, não sendo livre o cadastro de novas cantinas. 
+-Garantida a segurança dos dados dos clientes internos, incluindo informações de pagamento.
 - Conformidade com as regulamentações de proteção de dados, como o LGPD (Lei Geral de Proteção de Dados)
 
 ### 5. Testes e Garantia de Qualidade
@@ -59,18 +62,40 @@ O projeto está dividido em várias fases, com um cronograma estimado da seguint
 
 ## Orçamento
 
-Um orçamento detalhado será criado com base nos requisitos específicos do projeto, incluindo o hardware necessário e implementação.
+Um orçamento detalhado será discutido com base nos requisitos específicos do projeto, incluindo o hardware necessário e implementação, que seriam 3 tablets que podem ser do seguinte modelo já testado o desempenho necessário Samsung A8 SM-X200NZAUZTO.
 
 ## Equipe
 
 A equipe responsável pela execução deste projeto incluí:
 
-Frontend: Luis Roberto Domborovski Gonçalves;
-Frontend: Lucas Kuvalluk Baumgardt de Freitas;
+DevOps: Luis Roberto Domborovski Gonçalves;
 Frontend: Deniel Elian Kasperowicz;
+Full Stack: Lucas Kuvallluk Baumgardt de Freitas;
+Backend: Mateus José Maidel;
 
-Backend: Mateus Maidel;
+
+
+
 
 ## Conclusão
 
 Este projeto de digitalização da cantina tem como objetivo melhorar a eficiência e precisão, visando uma melhor experiência para os colaboradores. A implementação bem-sucedida dessas melhorias proporcionará benefícios significativos para a cantina e aos colaboradores que a utilizam, tornando as transações mais rápidas e convenientes. O sucesso do projeto será medido pelo aumento da satisfação dos colaboradores, pela redução de erros e pela melhoria geral na operação da cantina.
+
+## Contatos
+
+Luis Roberto Domborovski Gonçalves:
+GitHub: https://github.com/LuisFenixZ ,
+Email: luis.goncalves@pormade.com.br;
+_______________________________________________
+Lucas Kuvalluk Baumgardt de Freitas:
+GitHub: https://github.com/lucasbaumgardt ,
+Email: lucas.freitas@pormade.com.br ;
+_______________________________________________
+Deniel Elian Kasperowicz:
+GitHub: https://github.com/Denielkas ,
+Email: deniel.kasperowicz@pormade.com.br;
+_______________________________________________
+Matheus Jose Maidel:
+GitHub: https://github.com/mjmdl ,
+Email: matheus.maidel@pormade.com.br .
+_______________________________________________

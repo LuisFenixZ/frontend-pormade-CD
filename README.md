@@ -1,7 +1,5 @@
  # Documentação do Projeto Cantina Pormade
 
- # Documentação do Projeto Cantina Pormade
-
 ## Introdução
 
 Este documento descreve o projeto de digitalização da cantina, que tem como objetivo modernizar o processo de compra e principalmente de conferência das transações de nossas cantinas internas. A digitalização visa aumentar a eficiência, melhorar a precisão das transações e oferecer uma experiência mais conveniente aos clientes.

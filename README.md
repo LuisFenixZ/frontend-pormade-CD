@@ -66,12 +66,7 @@ Um orçamento detalhado será discutido com base nos requisitos específicos do 
 
 A equipe responsável pela execução deste projeto incluí:
 
-<<<<<<< HEAD
-Frontend: Luis Roberto Domborovski Gonçalves;
-Frontend: Lucas Kuvalluk Baumgardt de Freitas;
-=======
 DevOps: Luis Roberto Domborovski Gonçalves;
->>>>>>> b638e29f16dc45dfcc6647eb571796f43c3521ab
 Frontend: Deniel Elian Kasperowicz;
 Full Stack: Lucas Kuvallluk Baumgardt de Freitas;
 Backend: Mateus José Maidel;

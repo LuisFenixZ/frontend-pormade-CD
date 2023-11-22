@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import './style-login.css';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import logoCantina from "../../img/Cantina Logo White WLP.png";
+import logoCantina from "../../img/logo preta folha branca.png";
 import api from "../../services/api";
 
 const Login = () => {

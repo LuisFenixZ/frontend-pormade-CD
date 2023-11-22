@@ -1,5 +1,5 @@
 import React from "react";
-import './../Tela Inicial/inicial.css'
+import './styles.css'
 import { useNavigate } from "react-router-dom";
 
 const FormadePagamento = () => {
@@ -16,9 +16,9 @@ const FormadePagamento = () => {
     }
 
         return(
-            <div className="align-inicial-admin">
-                <button type="submit" className="button-cantina" onClick={avancatelapagamento}>Pix</button>
-                <button type="submit"className="button-gerencia" onClick={avancatelapagamentodinheiro}>Dinheiro</button>
+            <div className="align-inicial-pag">
+                <button type="submit" className="button-pix clique" onClick={avancatelapagamento}>Pix</button>
+                <button type="submit"className="button-dinheiro clique" onClick={avancatelapagamentodinheiro}>Dinheiro</button>
             </div>
         )
     }

@@ -11,6 +11,7 @@ pdfMake.fonts = {
   },
 };
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfMake.vfs;
 
 export default pdfMake;

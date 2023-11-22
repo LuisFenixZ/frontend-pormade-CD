@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './pagamentoqr.css';
+import './styles.css';
 import QrCodePix from "../../img/qrCodeCantina.png";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";

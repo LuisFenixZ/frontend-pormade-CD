@@ -66,7 +66,7 @@ Um orçamento detalhado será criado com base nos requisitos específicos do pro
 A equipe responsável pela execução deste projeto incluí:
 
 Frontend: Luis Roberto Domborovski Gonçalves;
-Frontend: Lucas Kuvallluk Baumgardt de Freitas;
+Frontend: Lucas Kuvalluk Baumgardt de Freitas;
 Frontend: Deniel Elian Kasperowicz;
 
 Backend: Mateus Maidel;

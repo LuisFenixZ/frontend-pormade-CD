@@ -1,6 +1,6 @@
 import React from "react";
-import './inicial-compra.css';
-import logoCantina from "../../img/Cantina Logo White WLP.png";
+import './styles.css';
+import logoCantina from "../../img/logo preta folha branca.png";
 import Clock from "./clock";
 import {useNavigate} from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const InicialCompra = () => {
 
     return(
         <body className="body_animation1">
-            <h1 className="company__h1__title animated-heading">Cantina da Confiança</h1>
+            {/* <h1 className="company__h1__title animated-heading">Cantina da Confiança</h1> */}
             <div className="company-align"> 
             
                 <Clock></Clock>

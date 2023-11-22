@@ -116,14 +116,14 @@ table {
 } */
 
 .tr_title{
-  position: sticky;
+  position: inherit;
   top: 0; /* Fixa o cabeçalho no topo */
   z-index: 1; 
 }
 
 .tr_title_total{
   border-top: 3px solid rgb(41, 41, 41);
-  position: sticky;
+  position: inherit;
   bottom: 0; 
   z-index: 1; 
 }

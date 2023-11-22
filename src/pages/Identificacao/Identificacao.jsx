@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Numpad from '../../components/Keypad/numpad';
-import "./identificacao.css";
+import "../../components/Keypad/styles.css";
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 

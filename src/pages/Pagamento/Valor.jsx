@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './value.css';
+import "../../components/Keypad/styles.css";
 import Numpad from '../../components/Keypad/numpad';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ function KeypadValueComponent() {
 
     return (
         <main>
-            <h1 className="value__h1__title">Digite o valor a pagar:</h1>
+            <h1 className="payment__h2__title">Digite o valor a pagar:</h1>
             <div>
                 <div className='display-keyboard'>
                     <div className='align-display'>

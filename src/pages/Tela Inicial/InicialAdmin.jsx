@@ -1,6 +1,6 @@
 import React from "react";
-import "./inicial.css";
-import logoCantina from "../../img/Cantina Logo White WLP.png";
+import "./styles.css";
+import logoCantina from "../../img/logo preta folha branca.png";
 import {useNavigate} from 'react-router-dom';
 
 const InicialAdmin =() => {

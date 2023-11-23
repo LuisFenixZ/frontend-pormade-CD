@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Numpad from '../../components/Keypad/numpad';
 import "../../components/Keypad/styles.css";
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 
@@ -58,15 +59,21 @@ function IdentificacaoComponent() {
                 console.log('Dados do cliente antes de armazenar:', customerData);
                 localStorage.setItem('customerData', JSON.stringify(customerData));
 
-    
+                Swal.fire({title: `Bem vindo ${customerData.name}!`, 
+                            icon: 'success',
+                            timer: 3000,
+                            showConfirmButton: false});
                 // Redirecione para a próxima página (por exemplo, "/valor")
                 history('/valor');
             } else {
                 // Trate o caso em que o CPF não existe
+
                 console.error('CPF não encontrado.');
+                Swal.fire('CPF não existente!', 'Por favor, digite um cpf válido!', 'error')
             }
         } catch (error) {
             console.error('Erro ao verificar CPF:', error);
+            Swal.fire('CPF não existente!', 'Por favor, digite um CPF válido!', 'error')
         }
     };
     

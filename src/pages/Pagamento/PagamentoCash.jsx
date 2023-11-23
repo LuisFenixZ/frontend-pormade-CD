@@ -90,7 +90,7 @@ const PagamentoCash = () => {
                 </div>
 
                 <button type="button"
-                    className="button_confirm" onClick={confirmarCompra}
+                    className="button_confirm clique" onClick={confirmarCompra}
                         >Confirmar
                 </button>
 

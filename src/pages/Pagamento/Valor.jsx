@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../../components/Keypad/styles.css";
 import Numpad from '../../components/Keypad/numpad';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function formatCurrencyValue(value) {
     return `R$ ${value}`;
@@ -16,10 +17,19 @@ function KeypadValueComponent() {
         // Converte centavos em reais (R$) e armazena no localStorage
         localStorage.setItem('value', (cents / 100).toFixed(2));
         console.log('Valor no localStorage:', (cents / 100).toFixed(2));
+        if (cents > 0) {
+            return;
+        } else if (cents !== 0){
+            Swal.fire('Valor não informado!', 'Por favor, digite um valor para prosseguir!', 'error');
+        }
     }, [cents]);
 
     const avancaPag = () => {
-        history('/forma-pagamento');
+        if (cents > 0) {
+            history('/forma-pagamento');
+        } else {
+            Swal.fire('Valor não informado!', 'Por favor, digite um valor para prosseguir!', 'error');
+        }
     }
 
     const changeValue = (numText) => {
@@ -50,7 +60,7 @@ function KeypadValueComponent() {
                         </div>
                     </div>
                 </div>
-                <button className="payment-continue" onClick={avancaPag}>Continuar</button>
+                <button className="button-continue" onClick={avancaPag}>Continuar</button>
             </div>
         </main>
     );

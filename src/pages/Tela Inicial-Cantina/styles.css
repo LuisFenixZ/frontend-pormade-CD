@@ -148,6 +148,7 @@
   margin-left: auto;
   margin-right: auto;
   animation: blinking-border 2s infinite, luminous-effect 2s infinite;
+  cursor: pointer;
 }
 
 @keyframes blinking-border {
@@ -200,6 +201,23 @@
   border-radius: 20px;
   animation: blinking-border-body 3s infinite, luminous-effect-body 3s infinite;
 } */
+
+@keyframes clicar {
+  0%, 100% {
+      background-color: #3cb62c;
+      color: #fff;
+      transform: scale(1);
+  }
+  50% {
+      background-color: #3cb62c;
+      color: #fff;
+      transform: scale(1.2);
+  }
+}
+
+.button-avan:active {
+  animation-name: clicar;
+}
 
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -384,10 +402,21 @@
     font-family: var(--primary-font);
     /* animation: seesaw-animation 1.5s infinite; */
   }
+  .clock{
+    width: 70%;
+    height: 180px;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #3cb62c;
+    font-size: 10vh;
+    text-align: center;
+    padding: 1%;
+  }
   .logoCantinaInicialCompra {
-    margin-top: 0;
-    width: 20%;
-    height: 20%;
+    margin: 1%;
+    width: 25%;
+    height: 25%;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -402,9 +431,9 @@
     font-size: 4vh;
     background-color: #48a73b;
     border: 2px solid #3cb62c;
-    border-radius: 25px;
-    width: 450px;
-    height: 120px;
+    border-radius: 15px;
+    width: 25%;
+    height: 150px;
     margin-left: auto;
     margin-right: auto;
     animation: blinking-border 4s infinite, luminous-effect 4s infinite;

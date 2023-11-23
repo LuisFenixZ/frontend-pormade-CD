@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import pdfMake from './pdfmakeConfig'; 
+import pdfMake from '../PdfConfig/pdfmakeConfig';
 import './relatorio.css';
 import api from '../../services/api';
 

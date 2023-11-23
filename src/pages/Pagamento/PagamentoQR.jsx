@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './styles.css';
+import Swal from "sweetalert2";
 import QrCodePix from "../../img/qrCodeCantina.png";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
@@ -26,6 +27,7 @@ const PagamentoQR = () => {
         } else {
             console.error('Dados do cliente não encontrados no localStorage.');
         }
+        
     }, []);
     
     const voltaInicio = () => {
@@ -63,12 +65,37 @@ const PagamentoQR = () => {
             });
         
             console.log('Compra registrada com sucesso.');
+
+            await Swal.fire({
+                title: 'Compra Realizada',
+                text: 'Pagamento registrado com sucesso!',
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false,
+            });
         
             history('/inicial-compra');
         } catch (error) {
             console.error('Erro ao registrar a compra:', error);
         }
     }
+
+    const handleConfirmCompra = async () => {
+        const result = await Swal.fire({
+            title: 'Confirmar Compra',
+            text: 'Deseja realmente confirmar pagamento?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+        });
+    
+        if (result.isConfirmed) {
+            confirmarCompra();
+        }
+    };
     
     
     return (
@@ -78,11 +105,15 @@ const PagamentoQR = () => {
                 <div className="p-text">
                     <p className="info_text">Nome: {customerData.name}</p>
                     <p className="info_text">Crachá: {customerData.badge}</p>
-                    <p className="info_text">Valor: R$ {customerData.value}</p>
+                    <p className="info_text">Valor: {parseFloat(customerData.value).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                        })}
+                    </p>
                 </div>
                 <img src={QrCodePix} alt="qr code cantina" className="pix_qrcode"></img>
             </div>
-            <button type="button" className="button_confirm" onClick={confirmarCompra}>Confirmar</button>
+            <button type="button" className="button_confirm clique" onClick={handleConfirmCompra}>Confirmar</button>
         </div>
     );
 };

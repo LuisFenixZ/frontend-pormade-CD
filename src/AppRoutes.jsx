@@ -26,36 +26,14 @@ function AppRoutes() {
 
             <Route element={<PrivateRoute/>}>
               <Route path="/admin/*" element={<InicialAdmin/>}></Route>
-            </Route>
-
-            <Route element={<PrivateRoute/>}>
               <Route path="/gerencia/*" element={<Gerencia/>}></Route>
-            </Route>
-
-            <Route element={<PrivateRoute/>}>
               <Route path="/inicial-compra/*" element={<InicialCompra/>}></Route>
-            </Route>
-
-            <Route element={<PrivateRoute/>}>
               <Route path="/identificacao/*" element={<Identificacao/>}></Route>
-            </Route>
-
-            <Route element={<PrivateRoute/>}>
               <Route path="/valor/*" element={<Valor/>}></Route>
-            </Route>
-  
-            <Route element={<PrivateRoute/>}>
               <Route path="/forma-pagamento/*" element={<FormadePagamento/>}></Route>
-            </Route>
-
-            <Route element={<PrivateRoute/>}>
               <Route path="/confirmacao/*" element={<PagamentoQR/>}></Route>
+              <Route path="/confirmacaocash/*" element={<PagamentoCash/>}></Route>         
             </Route>
-
-            <Route element={<PrivateRoute/>}>
-              <Route path="/confirmacaocash/*" element={<PagamentoCash/>}></Route>
-            </Route>
-      
           </Routes>
         </AuthProvider>
       </Router>

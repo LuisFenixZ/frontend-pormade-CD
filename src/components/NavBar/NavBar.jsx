@@ -26,6 +26,7 @@ function NavBar(props) {
   const handleLogout = () => {
     singOut();
     navigate('/login');
+    setIsModalOpen(false);
   };
 
   return (

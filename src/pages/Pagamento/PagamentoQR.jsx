@@ -12,6 +12,7 @@ const PagamentoQR = () => {
         badge: "",
         value: 0,
         cpf: "",
+        paymentMethod: null
     });
 
     useEffect(() => {
@@ -26,8 +27,21 @@ const PagamentoQR = () => {
             }));
         } else {
             console.error('Dados do cliente não encontrados no localStorage.');
+            Swal.fire({
+                title: 'Não foi possível fazer a compra!',
+                text: 'Nenhum dado encontrado!',
+                icon: 'error',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+            history('/inicial-compra');
         }
-        
+
+        const storedPaymentMethod = JSON.parse(localStorage.getItem('selectedPaymentMethod'));
+        setCustomerData(prevCustomerData => ({
+            ...prevCustomerData,
+            paymentMethod: storedPaymentMethod?.nome || null,
+        }));      
     }, []);
     
     const voltaInicio = () => {
@@ -52,12 +66,21 @@ const PagamentoQR = () => {
             const { customerToken } = response.data;
         
             // Obtenha o CPF e o valor do cliente a partir dos dados do cliente
-            const { value, cpf } = customerData;
+            const { value, paymentMethod, cpf } = customerData;
         
+            if (!value || !paymentMethod || !cpf) {
+                console.error('Dados do cliente incompletos.');
+                return;
+            }
+            console.log('CPF do cliente:', cpf);
+            console.log('Valor da compra:', value);
+            console.log('Método de pagamento:', paymentMethod);
+
             // Faça a solicitação para registrar a compra usando o token de consumidor
             await api.post("/purchase", {
                 customerCpf: cpf, // Use o CPF do cliente
                 value: value,
+                paymentMethod: paymentMethod
             }, {
                 headers: {
                     Authorization: `Bearer ${customerToken}`, // Adicione o token de consumidor
@@ -65,6 +88,9 @@ const PagamentoQR = () => {
             });
         
             console.log('Compra registrada com sucesso.');
+            console.log('CPF do cliente:', cpf);
+            console.log('Valor da compra:', value);
+            console.log('Método de pagamento:', paymentMethod);
 
             await Swal.fire({
                 title: 'Compra Realizada',
@@ -73,36 +99,40 @@ const PagamentoQR = () => {
                 timer: 3000,
                 showConfirmButton: false,
             });
-        
+
+            localStorage.removeItem('customerData');
+
+            localStorage.removeItem(customerToken);
+    
             history('/inicial-compra');
         } catch (error) {
             console.error('Erro ao registrar a compra:', error);
         }
     }
 
-    const handleConfirmCompra = async () => {
-        const result = await Swal.fire({
-            title: 'Confirmar Compra',
-            text: 'Deseja realmente confirmar pagamento?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim',
-            cancelButtonText: 'Não',
-        });
+    // const handleConfirmCompra = async () => {
+    //     const result = await Swal.fire({
+    //         title: 'Confirmar Compra',
+    //         text: 'Deseja realmente confirmar pagamento?',
+    //         icon: 'question',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Sim',
+    //         cancelButtonText: 'Não',
+    //     });
     
-        if (result.isConfirmed) {
-            confirmarCompra();
-        }
-    };
+    //     if (result.isConfirmed) {
+    //         confirmarCompra();
+    //     }
+    // };
     
     
     return (
         <div>
             <h1 className="cad__h2__title">Informações de Pagamento</h1>
-            <div className="container">
-                <div className="p-text">
+            <div className="container-pix">
+                <div className="p-text-pix">
                     <p className="info_text">Nome: {customerData.name}</p>
                     <p className="info_text">Crachá: {customerData.badge}</p>
                     <p className="info_text">Valor: {parseFloat(customerData.value).toLocaleString('pt-BR', {
@@ -110,10 +140,11 @@ const PagamentoQR = () => {
                         currency: 'BRL'
                         })}
                     </p>
+                    <p className="info_text">Método de Pagamento: {customerData.paymentMethod}</p>
                 </div>
                 <img src={QrCodePix} alt="qr code cantina" className="pix_qrcode"></img>
             </div>
-            <button type="button" className="button_confirm clique" onClick={handleConfirmCompra}>Confirmar</button>
+            <button type="button" className="button_confirm clique" onClick={confirmarCompra}>Confirmar</button>
         </div>
     );
 };

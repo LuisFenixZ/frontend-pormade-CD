@@ -149,7 +149,97 @@
 }
 
 @media (min-width: 1280px) and (max-width: 1368px) {
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 60vh;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        border: solid 2px #48a73b;
+        border-radius: 10px;
+        padding: 1%;
+    }
+
+    .container-pix{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 60vh;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        border: solid 2px #48a73b;
+        border-radius: 10px;
+        padding: 1%;
+    }
     
+    .cad__h2__title{
+        font-family: var(--primary-font);
+        text-align: center;
+        font-size: 3vh;
+        color: white;
+        margin: 2%;
+    
+    }
+    
+    .info_text{
+        font-family: var(--primary-font);
+        font-size: 2vh;
+        margin-top: 1%;
+        color: white;
+    }
+    
+    .p-text{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        float: left;
+    }
+
+    .p-text-pix{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        float: left;
+    }
+    
+    .pix_qrcode{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        width: 90%;
+    }
+    
+    .button_confirm{
+        margin-top: 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--primary-font);
+        color: white;
+        font-size: 4vh;
+        background-color: #48a73b;
+        border: 2px solid #3cb62c;
+        border-radius: 10px;
+        width: 25%;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .home{
+        display: flex;
+        width: 10%;
+        height: 10%;
+        margin-top: 2%;
+        margin-left: 2%;
+    
+    }
 }
 
 @media (min-width: 1368px) and (max-width: 1400px) {

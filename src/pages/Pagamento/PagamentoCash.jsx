@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import './styles.css';
+import Swal from "sweetalert2";
 import Logo from "../../img/logo preta folha branca.png";
 import api from '../../services/api';
 import { useNavigate } from "react-router-dom";
@@ -29,6 +30,14 @@ const PagamentoCash = () => {
             }));
         } else {
             console.error('Dados do cliente não encontrados no localStorage.');
+            Swal.fire({
+                title: 'Não foi possível fazer a compra!',
+                text: 'Nenhum dado encontrado!',
+                icon: 'error',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+            history('/inicial-compra');
         }
 
         const storedPaymentMethod = JSON.parse(localStorage.getItem('selectedPaymentMethod'));
@@ -81,6 +90,18 @@ const PagamentoCash = () => {
             console.log('CPF do cliente:', cpf);
             console.log('Valor da compra:', value);
             console.log('Método de pagamento:', paymentMethod);
+
+            await Swal.fire({
+                title: 'Compra Realizada',
+                text: 'Pagamento registrado com sucesso!',
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+
+            localStorage.removeItem('customerData');
+
+            localStorage.removeItem(customerToken);
         
             history('/inicial-compra');
         } catch (error) {
@@ -88,9 +109,22 @@ const PagamentoCash = () => {
         }
     }
 
-    const voltaInicio = () => {
-        history('/inicial-compra');
-    }
+    // const handleConfirmCompra = async () => {
+    //     const result = await Swal.fire({
+    //         title: 'Confirmar Compra',
+    //         text: 'Deseja realmente confirmar pagamento?',
+    //         icon: 'question',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Sim',
+    //         cancelButtonText: 'Não',
+    //     });
+    
+    //     if (result.isConfirmed) {
+    //         confirmarCompra();
+    //     }
+    // };
 
     return(
         <div>
@@ -102,7 +136,11 @@ const PagamentoCash = () => {
                         
                         <p className="info_text">Nome: {customerData.name}</p>
                         <p className="info_text">Crachá: {customerData.badge}</p>
-                        <p className="info_text">Valor: R$ {customerData.value}</p>
+                        <p className="info_text">Valor: {parseFloat(customerData.value).toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                        })}
+                        </p>
                         <p className="info_text">Método de Pagamento: {customerData.paymentMethod}</p>
                     </div>
                     <img src= {Logo} alt="qr code cantina" className="pix_qrcode"></img>

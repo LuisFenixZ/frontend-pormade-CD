@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BiLogOut } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AuthContext } from '../../contexts/useAuth';
 import { TbMenu2 } from "react-icons/tb";
 import logoPormade from '../../img/logoPormade.png';
 import "./styles.css";
 
 
 function NavBar(props) {
-  const history = useNavigate();
+  
+  const { singOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState(false); // Adicione o estado para controlar o modal
 
@@ -22,12 +23,10 @@ function NavBar(props) {
 
   // const [userInfoVisibility, setUserInfoVisibility] = useState(false);
   
-  // const handleLogout = () => {
-  //   // Limpar o token de autenticação (caso esteja armazenado localmente)
-  //   localStorage.removeItem('adminToken');
-
-  //   history('/login')
-  // };
+  const handleLogout = () => {
+    singOut();
+    navigate('/login');
+  };
 
   return (
     <nav className=''>
@@ -50,6 +49,10 @@ function NavBar(props) {
           <div className='modal_titulo'>
           <p>Conteúdo do Menu</p> {/* Adicione o conteúdo do seu menu aqui */}
             <TbMenu2 className='menu_nav_close' onClick={handleCloseModal}>&times;</TbMenu2>
+          </div>
+
+          <div>
+            <button onClick={handleLogout}>Logout</button>  
           </div> 
         </div>
       </div>

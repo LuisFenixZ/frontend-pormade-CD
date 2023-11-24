@@ -1,65 +1,26 @@
-import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import './style-login.css';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
 import logoCantina from "../../img/logo preta folha branca.png";
-import api from "../../services/api";
+import { AuthContext } from "../../contexts/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-  const history = useNavigate();
-  const [authenticated, setAuthenticated] = useState(false);
+  const { signIn, signed } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   const adminToken = localStorage.getItem("adminToken");
-  //   if (adminToken) {
-  //     setAuthenticated(true);
-  //     history.replace("/canteen");
-  //   }
-  // }, []);
-
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-
-      console.log(email);
-      console.log(password);
-
-      const response = await api.post("/canteen/admin", {
-        email: email,
-        password: password,
-      });
-      console.log(response);
-
-      
-      const { adminToken } = response.data;
-
-      if (adminToken) {
-        localStorage.setItem("adminToken", adminToken);
-        setAuthenticated(true);
-        console.log("Antes de navegar para /admin");
-        history("/admin");
-        console.log("Após navegar para /admin");
-      
-        Swal.fire("Login Realizado com Sucesso", "Seja Bem Vindo!", "success");
-      } else {
-        Swal.fire("Erro ao fazer login", "Verifique suas credenciais e tente novamente", "error");
-      }
-        
-      
-    } catch (error) {
-      console.error("Erro ao executar a função handleLogin:", error);
-      Swal.fire("Erro ao fazer login", "Verifique suas credenciais e tente novamente", "error");
-    }
+    const data = {
+      email,
+      password,
+    };
+    await signIn(data);
   };
-
-  if (authenticated) {
-    return <div>Você está autenticado!</div>
-  }
+  console.log(signed);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -69,37 +30,41 @@ const Login = () => {
     setShowRegisterPassword(!showRegisterPassword);
   };
 
-  return (
-         
-    <form className="align-form">
-      <img className="logoCantina" src={logoCantina} alt="logoCantina"></img>
+  if (!signed) {
+    return (
+      
+      <form className="align-form" onSubmit={handleSubmit}>
+        <img className="logoCantina" src={logoCantina} alt="logoCantina"></img>
         <h2 className="login__h2__title">Faça o Login</h2>
       
-                <p className="par">Usuário</p>
-                <div className="divCamp">    
-                    <input type="text" name="emailLogin" value={email} onChange={e => setEmail(e.target.value)} className="inputCamp"  />
-                </div>
-              
-                <p className="par">Senha</p>
-                
-                <div className="divCampPassword">
+        <p className="par">Usuário</p>
+        <div className="divCamp">    
+            <input type="text" name="emailLogin" value={email} onChange={e => setEmail(e.target.value)} className="inputCamp"  />
+        </div>
+      
+        <p className="par">Senha</p>
+        
+        <div className="divCampPassword">
 
-                  <input type={showPassword ? "text" : "password"} name="passwordLogin" 
-                  value={password} 
-                  onChange={e => setPassword(e.target.value)} 
-                  className="inputCamp"/>
+          <input type={showPassword ? "text" : "password"} name="passwordLogin" 
+          value={password} 
+          onChange={e => setPassword(e.target.value)} 
+          className="inputCamp"/>
 
-                  <div className=""> {showPassword ? (<div onClick={togglePasswordVisibility}><AiOutlineEyeInvisible
-                    className="eyesHide"/></div>) : (<div onClick={togglePasswordVisibility}><AiOutlineEye className="eyesShow" /></div>)}
-                  </div>
-                </div>
+          <div className=""> {showPassword ? (<div onClick={togglePasswordVisibility}><AiOutlineEyeInvisible
+            className="eyesHide"/></div>) : (<div onClick={togglePasswordVisibility}><AiOutlineEye className="eyesShow" /></div>)}
+          </div>
+        </div>
 
-                <button type="button" onClick={handleLogin}
-                    className="button-submit"
-                    >Entrar
-                </button>
-    </form>
-);
+        <button type="submit"
+            className="button-submit"
+            >Entrar
+        </button>
+      </form>
+    );
+  } else {
+    return <Navigate to="/admin" />;
+  }
 };
 
 export default Login;

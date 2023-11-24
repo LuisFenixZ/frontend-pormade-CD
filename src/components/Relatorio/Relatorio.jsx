@@ -79,9 +79,9 @@ const Relatorio = () => {
         {
           table: {
             headerRows: 1,
-            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
             body: [
-              ['ID', 'Valor', 'Nome do Colaborador', 'CPF do Colaborador', 'Crachá', 'Data - Hora'],
+              ['ID', 'Valor', 'Método de Pagamento', 'Nome do Colaborador', 'CPF do Colaborador', 'Crachá', 'Data - Hora'],
               ...purchases.map((purchase) => [
                 purchase.id,
                 purchase.value ? (
@@ -90,6 +90,7 @@ const Relatorio = () => {
                     currency: 'BRL',
                   })
                 ) : '',
+                purchase.paymentMethod,
                 purchase.customerName,
                 purchase.customerCpf,
                 purchase.customerBadge,
@@ -100,7 +101,7 @@ const Relatorio = () => {
                   style: 'currency',
                   currency: 'BRL',
                 })
-              ) : '', '', '', '', '']
+              ) : '', '', '', '', '', '']
             ],
           },
           layout: 'lightHorizontalLines',
@@ -142,6 +143,7 @@ const Relatorio = () => {
                     currency: 'BRL',
                   })
                 ) : '',
+                purchase.paymentMethod,
                 purchase.customerName,
                 purchase.customerCpf,
                 purchase.customerBadge,
@@ -258,6 +260,7 @@ const Relatorio = () => {
             <tr className='tr_title'>
               <th className="th_title">ID</th>
               <th className="th_title">Valor</th>
+              <th className="th_title">Método de Pagamento</th>
               <th className="th_title">Nome da Colaborador</th>
               <th className="th_title">CPF do Colaborador</th>
               <th className="th_title">Crachá</th>
@@ -276,6 +279,7 @@ const Relatorio = () => {
                     })
                   ) : ''}
                 </td>
+                <td className='td_title3'>{purchase.paymentMethod}</td>
                 <td className='td_title3'>{purchase.customerName}</td>
                 <td className='td_title4'>{purchase.customerCpf}</td>
                 <td className='td_title4'>{purchase.customerBadge}</td>
@@ -301,6 +305,7 @@ const Relatorio = () => {
                   ) : ''}
                 <hr className='hr_line'></hr>
               </th>
+              <th className='th_total'></th>
               <th className='th_total'></th>
               <th className='th_total'></th>
               <th className='th_total'></th>

@@ -61,7 +61,7 @@ function IdentificacaoComponent() {
 
                 Swal.fire({title: `Bem vindo ${customerData.name}!`, 
                             icon: 'success',
-                            timer: 3000,
+                            timer: 1500,
                             showConfirmButton: false});
                 // Redirecione para a próxima página (por exemplo, "/valor")
                 history('/valor');

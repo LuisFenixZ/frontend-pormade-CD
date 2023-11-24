@@ -14,6 +14,7 @@ const PagamentoCash = () => {
         badge: "",
         value: 0,
         cpf: "",
+        paymentMethod: null
     });
 
     useEffect(() => {
@@ -29,6 +30,12 @@ const PagamentoCash = () => {
         } else {
             console.error('Dados do cliente não encontrados no localStorage.');
         }
+
+        const storedPaymentMethod = JSON.parse(localStorage.getItem('selectedPaymentMethod'));
+        setCustomerData(prevCustomerData => ({
+            ...prevCustomerData,
+            paymentMethod: storedPaymentMethod?.nome || null,
+        }));
     }, []);
 
     const confirmarCompra = async () => {
@@ -49,12 +56,21 @@ const PagamentoCash = () => {
             const { customerToken } = response.data;
         
             // Obtenha o CPF e o valor do cliente a partir dos dados do cliente
-            const { value, cpf } = customerData;
+            const { value, paymentMethod, cpf } = customerData;
         
+            if (!value || !paymentMethod || !cpf) {
+                console.error('Dados do cliente incompletos.');
+                return;
+            }
+            console.log('CPF do cliente:', cpf);
+            console.log('Valor da compra:', value);
+            console.log('Método de pagamento:', paymentMethod);
             // Faça a solicitação para registrar a compra usando o token de consumidor
             await api.post("/purchase", {
                 customerCpf: cpf, // Use o CPF do cliente
                 value: value,
+                paymentMethod: paymentMethod
+
             }, {
                 headers: {
                     Authorization: `Bearer ${customerToken}`, // Adicione o token de consumidor
@@ -62,6 +78,9 @@ const PagamentoCash = () => {
             });
         
             console.log('Compra registrada com sucesso.');
+            console.log('CPF do cliente:', cpf);
+            console.log('Valor da compra:', value);
+            console.log('Método de pagamento:', paymentMethod);
         
             history('/inicial-compra');
         } catch (error) {
@@ -84,7 +103,7 @@ const PagamentoCash = () => {
                         <p className="info_text">Nome: {customerData.name}</p>
                         <p className="info_text">Crachá: {customerData.badge}</p>
                         <p className="info_text">Valor: R$ {customerData.value}</p>
-
+                        <p className="info_text">Método de Pagamento: {customerData.paymentMethod}</p>
                     </div>
                     <img src= {Logo} alt="qr code cantina" className="pix_qrcode"></img>
                 </div>

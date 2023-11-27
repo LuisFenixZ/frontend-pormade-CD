@@ -251,7 +251,96 @@
 }
 
 @media (min-width: 1440px) and (max-width: 1600px) {
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        border: solid 2px #48a73b;
+        border-radius: 10px;
+        padding: 1%;
+    }
+
+    .container-pix{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 60vh;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        border: solid 2px #48a73b;
+        border-radius: 10px;
+        padding: 1%;
+    }
     
+    .cad__h2__title{
+        font-family: var(--primary-font);
+        text-align: center;
+        font-size: 3.5vh;
+        color: white;
+        margin: 1%;
+    
+    }
+    
+    .info_text{
+        font-family: var(--primary-font);
+        font-size: 1vw;
+        margin-top: 1%;
+        color: white;
+    }
+    
+    .p-text{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        float: left;
+    }
+
+    .p-text-pix{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        float: left;
+    }
+    
+    .pix_qrcode{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 70%;
+    }
+    
+    .button_confirm{
+        margin-top: 1.5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--primary-font);
+        color: white;
+        font-size: 4vh;
+        background-color: #48a73b;
+        border: 2px solid #3cb62c;
+        border-radius: 10px;
+        width: 25%;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .home{
+        display: flex;
+        width: 10%;
+        height: 10%;
+        margin-top: 2%;
+        margin-left: 2%;
+    
+    }
 }
 
 @media (min-width: 1600px) and (max-width: 1680px) {

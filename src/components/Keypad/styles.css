@@ -387,8 +387,8 @@
     }
     .numpad {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        grid-template-rows: repeat(4, 100px);
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-template-rows: repeat(4, 90px);
         margin: 2%;
         align-items: center;
         justify-content: center;
@@ -416,7 +416,7 @@
 
     .display-keyboard{
         margin-top: 1%;
-        width: 25%;
+        width: 20%;
         border: solid 1px #3cb62c;
         display: flex;
         align-items: center;
@@ -461,7 +461,7 @@
         font-size: 3vh;
     }
     .button-continue {
-        margin-top: 2%;
+        margin-top: 1%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -472,7 +472,7 @@
         border: 2px solid #3cb62c;
         border-radius: 5px;
         width: 20%;
-        height: 100px;
+        height: 90px;
         margin-left: auto;
         margin-right: auto;
         cursor: pointer;

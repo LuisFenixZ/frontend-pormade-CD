@@ -11,7 +11,7 @@ function NavBar(props) {
   const { singOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [isModalOpen, setIsModalOpen] = useState(false); // Adicione o estado para controlar o modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -44,11 +44,11 @@ function NavBar(props) {
         <TbMenu2 className='menu_nav' onClick={handleOpenModal}></TbMenu2>
       </div>
 
-      {isModalOpen && ( // Renderize o modal apenas quando o estado for verdadeiro
+      {isModalOpen && ( 
       <div className="modal">
         <div className="modal-content">
           <div className='modal_titulo'>
-          <p>Conteúdo do Menu</p> {/* Adicione o conteúdo do seu menu aqui */}
+          <p>Conteúdo do Menu</p>
             <TbMenu2 className='menu_nav_close' onClick={handleCloseModal}>&times;</TbMenu2>
           </div>
 

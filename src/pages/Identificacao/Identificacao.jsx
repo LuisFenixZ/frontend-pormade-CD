@@ -27,50 +27,50 @@ function IdentificacaoComponent() {
 
     const avancaValor = async () => {
         try {
-            // Obtenha o token de administrador do localStorage
             const adminToken = localStorage.getItem('adminToken');
     
-            // Verifique se o token de administrador existe
             if (!adminToken) {
                 console.error('Token de administrador não encontrado.');
                 return;
             }
     
-            // Faça a solicitação para verificar o CPF
             const response = await api.get(`/customer/cpf=${cpf}`, {
                 headers: {
                     Authorization: `Bearer ${adminToken}`,
                 },
             });
     
-            // Adicione este console.log para verificar os dados retornados
             console.log('CPF:', cpf);
             console.log('Dados retornados:', response.data);
     
-            // Verifique se o CPF existe na resposta
-            if (response.data.customer) {
-                // Crie um objeto de dados do cliente que inclui o CPF
+            if (response.data) {
+                const { name, badge } = response.data;
+            
                 const customerData = {
                     cpf: cpf,
+                    name: name,
+                    badge: badge,
                     ...response.data.customer,
                 };
-    
-                // Armazene os dados do cliente no localStorage
+            
                 console.log('Dados do cliente antes de armazenar:', customerData);
                 localStorage.setItem('customerData', JSON.stringify(customerData));
-
-                Swal.fire({title: `Bem vindo ${customerData.name}!`, 
-                            icon: 'success',
-                            timer: 1500,
-                            showConfirmButton: false});
-                // Redirecione para a próxima página (por exemplo, "/valor")
+            
+                const welcomeMessage = name ? `Bem vindo ${name}!` : 'Bem vindo!';
+                
+                Swal.fire({
+                    title: welcomeMessage,
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            
                 history('/valor');
             } else {
-                // Trate o caso em que o CPF não existe
-
                 console.error('CPF não encontrado.');
-                Swal.fire('CPF não existente!', 'Por favor, digite um cpf válido!', 'error')
+                Swal.fire('CPF não existente!', 'Por favor, digite um cpf válido!', 'error');
             }
+            
         } catch (error) {
             console.error('Erro ao verificar CPF:', error);
             Swal.fire('CPF não existente!', 'Por favor, digite um CPF válido!', 'error')

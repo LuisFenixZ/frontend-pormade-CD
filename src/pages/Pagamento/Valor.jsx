@@ -12,9 +12,7 @@ function KeypadValueComponent() {
     const [cents, setCents] = useState(0);
     const history = useNavigate();
 
-    // Esta função useEffect observará a variável 'cents' e atualizará o valor no localStorage sempre que 'cents' mudar.
     useEffect(() => {
-        // Converte centavos em reais (R$) e armazena no localStorage
         localStorage.setItem('value', (cents / 100).toFixed(2));
         console.log('Valor no localStorage:', (cents / 100).toFixed(2));
         if (cents > 0) {

@@ -24,16 +24,16 @@ const FormadePagamento = () => {
                     },
                 });
         
-                console.log('Resposta da API:', response.data); // Adiciona esta linha para imprimir a resposta no console
-        
-                if (response.data.paymentmethods && Array.isArray(response.data.paymentmethods)) {
-                    const data = response.data.paymentmethods.map(method => ({
+                console.log('Resposta da API:', response.data); 
+
+                if (response.data && Array.isArray(response.data)) {
+                    const data = response.data.map(method => ({
                         ...method,
-                        id: method.id.toString(), // Converte o ID para string, se necessário
+                        id: method.id.toString(),
                     }));
                     setPaymentMethods(data);
                 } else {
-                    console.error('Erro ao buscar métodos de pagamento: Formato de resposta inválido.');
+                    console.error
                 }
             } catch (error) {
                 console.error('Erro ao buscar métodos de pagamento:', error);
@@ -62,16 +62,13 @@ const FormadePagamento = () => {
 
         console.log('ID do Método:', method.id);
         console.log('Método armazenado no localStorage:', storedPaymentMethod);
-        // Verifica se o valor correspondente está armazenado
         if (storedPaymentMethod && storedPaymentMethod.id === method.id) {
-            // O valor correspondente está armazenado, pode avançar para a próxima etapa
             if (method.method.toLowerCase() === 'pix') {
                 avancatelapagamento();
             } else if (method.method.toLowerCase() === 'dinheiro') {
                 avancatelapagamentodinheiro();
             }
         } else {
-            // Valor não correspondente, você pode mostrar uma mensagem ou tomar outra ação
             console.log('Valor correspondente não encontrado.');
         }
     };

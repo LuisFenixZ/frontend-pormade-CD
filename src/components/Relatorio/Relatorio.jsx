@@ -3,19 +3,22 @@ import pdfMake from '../PdfConfig/pdfmakeConfig';
 import './relatorio.css';
 import api from '../../services/api';
 
-import Calendario from './Calendario'; // Importe o componente Calendario aqui
+import Calendario from './Calendario'; 
 
 const Relatorio = () => {
 
   const [purchases, setPurchases] = useState([]);
-  const [month, setMonth] = useState(new Date().getMonth() + 1); // Mês atual como valor padrão
-  const [year, setYear] = useState(new Date().getFullYear()); // Ano atual como valor padrão
+  const [month, setMonth] = useState(new Date().getMonth() + 1); 
+  const [year, setYear] = useState(new Date().getFullYear()); 
   const [pdfSrc, setPdfSrc] = useState(null);
   const [isPdfOpen, setIsPdfOpen] = useState(false);
 
   async function fetchData() {
     try {
-      if (month !== null && year !== null) { // Verifica se month e year não são nulos
+      if (month !== null && year !== null) {
+        console.log('Month:', month);
+        console.log('Year:', year);
+ 
         const adminToken = localStorage.getItem('adminToken');
         console.log('Token de Administrador:', adminToken);
 
@@ -34,8 +37,8 @@ const Relatorio = () => {
 
         const responseData = response.data;
 
-        if (responseData && responseData.purchases) {
-          setPurchases(responseData.purchases);
+        if (responseData) {
+          setPurchases(responseData);
 
         } else {
           setPurchases([]);
@@ -214,10 +217,10 @@ const Relatorio = () => {
     const adminToken = localStorage.getItem('adminToken');
 
     try {
-      const response = await api.get(`/purchases/sheet/month=${month}/year=${year}`, {
-        responseType: 'blob', // Indica que a resposta é um blob (arquivo)
+      const response = await api.get(`/purchases/sheet?month=${month}&year=${year}`, {
+        responseType: 'blob', 
         headers: {
-          Authorization: `Bearer ${adminToken}`, // Inclua o token de administração no cabeçalho
+          Authorization: `Bearer ${adminToken}`,
         },
       });
   
@@ -226,7 +229,7 @@ const Relatorio = () => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `relatórioCantina${months.find(m => m.value === month)?.name}.xlsx`; // Especifique o nome do arquivo aqui
+        a.download = `relatórioCantina${months.find(m => m.value === month)?.name}.xlsx`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
@@ -291,12 +294,6 @@ const Relatorio = () => {
             <tr className='tr_title_total'>
             <th className='th_title'>Total</th>
               <th className='th_total'>
-                {/* {purchases.length > 0 && purchases[0].totalValue ? (
-                  purchases[0].totalValue.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })
-                ) : ''} */}
                 {purchases.length > 0 && purchases[0].totalValue ? (
                     parseFloat(purchases[0].totalValue.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
                       style: 'currency',
@@ -314,7 +311,7 @@ const Relatorio = () => {
           </thead>
         </table>
       </div>
-      {/* {pdfSrc && <iframe src={pdfSrc} title="PDF Viewer" className='pdf_iframe'></iframe>} */}
+      {pdfSrc && <iframe src={pdfSrc} title="PDF Viewer" className='pdf_iframe'></iframe>}
     </div>
   );
 };

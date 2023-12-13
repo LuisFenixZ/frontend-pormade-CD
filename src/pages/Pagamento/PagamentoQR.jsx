@@ -19,6 +19,7 @@ const PagamentoQR = () => {
         const storedCustomerData = JSON.parse(localStorage.getItem('customerData'));
     
         if (storedCustomerData) {
+            console.log('Customer Data from localStorage:', storedCustomerData);
             setCustomerData(storedCustomerData);
             const storedValue = parseFloat(localStorage.getItem('value')) || 0;
             setCustomerData(prevCustomerData => ({
@@ -65,7 +66,6 @@ const PagamentoQR = () => {
         
             const { customerToken } = response.data;
         
-            // Obtenha o CPF e o valor do cliente a partir dos dados do cliente
             const { value, paymentMethod, cpf } = customerData;
         
             if (!value || !paymentMethod || !cpf) {
@@ -76,14 +76,13 @@ const PagamentoQR = () => {
             console.log('Valor da compra:', value);
             console.log('Método de pagamento:', paymentMethod);
 
-            // Faça a solicitação para registrar a compra usando o token de consumidor
             await api.post("/purchase", {
-                customerCpf: cpf, // Use o CPF do cliente
+                customerCpf: cpf, 
                 value: value,
                 paymentMethod: paymentMethod
             }, {
                 headers: {
-                    Authorization: `Bearer ${customerToken}`, // Adicione o token de consumidor
+                    Authorization: `Bearer ${customerToken}`, 
                 },
             });
         

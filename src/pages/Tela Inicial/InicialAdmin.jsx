@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import logoCantina from "../../img/logo preta folha branca.png";
 import {useNavigate} from 'react-router-dom';
 
@@ -15,10 +14,10 @@ const InicialAdmin =() => {
     }
     return(
         
-            <div className="align-inicial-admin">
+            <div className="w-fulll h-[90vh] flex flex-col justify-center items-center gap-10 mx-auto my-auto">
                 {/* <img className="logoCantinaInicial" src={logoCantina}></img> */}
-                <button type="submit" className="button-cantina" onClick={avancaTelaEspera}>Cantina</button>
-                <button className="button-gerencia" onClick={avancaTelaGerencia}>Gerência</button>
+                <button className="bg-green1 w-[450px] h-[120px] text-white text-[25px] rounded-[15px] font-primary" onClick={avancaTelaEspera}>Cantina</button>
+                <button className="bg-green1 w-[450px] h-[120px] text-white text-[25px] rounded-[15px] font-primary" onClick={avancaTelaGerencia}>Gerência</button>
             </div>
         
     );

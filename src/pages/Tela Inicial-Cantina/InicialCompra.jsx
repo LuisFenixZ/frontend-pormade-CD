@@ -12,8 +12,7 @@ const InicialCompra = () => {
     }
 
     return(       
-        <div className="company-align"> 
-            {/* <h1 className="company__h1__title animated-heading">Cantina da Confiança</h1> */}
+        <div className="flex flex-col justify-center items-center"> 
             <Clock></Clock>
             <img className="logoCantinaInicialCompra" src={logoCantina}></img>
             <button className="button-avan" onClick={avancaDisplay}>Começar</button>

@@ -11,6 +11,9 @@ export default defineConfig({
     skipWaiting: true
     } })
   ],
+  css: {
+    postcss: './postcss.config.js',
+  },
   server: {
     host: '0.0.0.0',
   },

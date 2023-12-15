@@ -15,24 +15,30 @@ import { PrivateRoute } from "./PrivaterRoutes";
 
 function AppRoutes() {
 
+  const Layout = ({ children }) => (
+    <>
+      <NavBar/>
+      {children}
+    </>
+  );
+
   return (
       <Router>
         <AuthProvider>
-        <NavBar/>
           <Routes>
 
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login/>}></Route>
 
             <Route element={<PrivateRoute/>}>
-              <Route path="/admin/*" element={<InicialAdmin/>}></Route>
-              <Route path="/gerencia/*" element={<Gerencia/>}></Route>
-              <Route path="/inicial-compra/*" element={<InicialCompra/>}></Route>
-              <Route path="/identificacao/*" element={<Identificacao/>}></Route>
-              <Route path="/valor/*" element={<Valor/>}></Route>
-              <Route path="/forma-pagamento/*" element={<FormadePagamento/>}></Route>
-              <Route path="/confirmacao/*" element={<PagamentoQR/>}></Route>
-              <Route path="/confirmacaocash/*" element={<PagamentoCash/>}></Route>         
+              <Route path="/admin/*" element={<Layout><InicialAdmin/></Layout>}></Route>
+              <Route path="/gerencia/*" element={<Layout><Gerencia/></Layout>}></Route>
+              <Route path="/inicial-compra/*" element={<Layout><InicialCompra/></Layout>}></Route>
+              <Route path="/identificacao/*" element={<Layout><Identificacao/></Layout>}></Route>
+              <Route path="/valor/*" element={<Layout><Valor/></Layout>}></Route>
+              <Route path="/forma-pagamento/*" element={<Layout><FormadePagamento/></Layout>}></Route>
+              <Route path="/confirmacao/*" element={<Layout><PagamentoQR/></Layout>}></Route>
+              <Route path="/confirmacaocash/*" element={<Layout><PagamentoCash/></Layout>}></Route>         
             </Route>
           </Routes>
         </AuthProvider>

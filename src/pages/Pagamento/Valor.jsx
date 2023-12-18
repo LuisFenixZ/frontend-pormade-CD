@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "../../components/Keypad/styles.css";
 import Numpad from '../../components/Keypad/numpad';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -45,22 +44,20 @@ function KeypadValueComponent() {
     const formattedValue = formatCurrencyValue((cents / 100).toFixed(2));
 
     return (
-        <main>
-            <h1 className="payment__h2__title">Digite o valor a pagar:</h1>
-            <div>
-                <div className='display-keyboard'>
-                    <div className='align-display'>
-                        <div className='result'>
-                            {formattedValue}
-                        </div>
-                        <div>
-                            <Numpad onKeyPress={changeValue} />
-                        </div>
+        <div className='flex flex-col justify-center items-center gap-6'>
+            <h1 className="text-white text-[35px] text-center font-primary mt-10">Digite o valor a pagar:</h1>
+            <div className='flex flex-col justify-center items-center w-[80%] border-2 border-green2 rounded-[10px]'>
+                <div className='w-[90%] flex flex-col justify-center items-center'>
+                    <div className='flex flex-row justify-center items-center w-[90%] h-[80px] text-white text-[50px] border-2 border-green2 rounded-[10px] mt-5'>
+                        {formattedValue}
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <Numpad onKeyPress={changeValue} />
                     </div>
                 </div>
-                <button className="button-continue" onClick={avancaPag}>Continuar</button>
             </div>
-        </main>
+            <button className="flex justify-center items-center w-[80%] h-[120px] text-white text-[30px] font-primary bg-green2 rounded-[10px]" onClick={avancaPag}>Continuar</button>
+        </div>
     );
 }
 

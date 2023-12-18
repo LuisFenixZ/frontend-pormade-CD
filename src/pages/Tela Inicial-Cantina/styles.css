@@ -132,23 +132,8 @@
   }
 }
 
-.button-avan {
-  margin-top: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--primary-font);
-  color: white;
-  font-size: 2vh;
-  background-color: #48a73b;
-  border: 2px solid #3cb62c;
-  border-radius: 25px;
-  width: 450px;
-  height: 120px;
-  margin-left: auto;
-  margin-right: auto;
+.button-animation {
   animation: blinking-border 2s infinite, luminous-effect 2s infinite;
-  cursor: pointer;
 }
 
 @keyframes blinking-border {

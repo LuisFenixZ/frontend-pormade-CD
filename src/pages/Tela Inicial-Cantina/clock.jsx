@@ -52,7 +52,7 @@ function Clock() {
     };
 
     return (
-        <div className="clock">
+        <div className="text-green2 text-center md:text-[120px] xl:text-[80px] font-primary">
             <div id="relogio">{formatTime(time)}</div>
             <div id="hr" style={rotationStyles.hours}></div>
             <div id="mn" style={rotationStyles.minutes}></div>

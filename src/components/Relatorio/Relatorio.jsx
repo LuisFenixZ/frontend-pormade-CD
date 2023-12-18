@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import pdfMake from '../PdfConfig/pdfmakeConfig';
-import './relatorio.css';
 import api from '../../services/api';
 
 import Calendario from './Calendario'; 
@@ -125,69 +124,6 @@ const Relatorio = () => {
     // pdfMake.createPdf(docDefinition).download('relatorio.pdf'); // Faz o download do PDF com o nome "relatorio.pdf"
   };
 
-  const viewPdf = () => {
-    const docDefinition = {
-      content: [
-        {
-          text: `Relatório de Compras do mês de ${months.find(m => m.value === month)?.name}`,
-          style: 'header',
-        },
-        {
-          table: {
-            headerRows: 1,
-            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
-            body: [
-              ['ID', 'Valor', 'Nome do Colaborador', 'CPF do Colaborador', 'Crachá', 'Data - Hora'],
-              ...purchases.map((purchase) => [
-                purchase.id,
-                purchase.value ? (
-                  parseFloat(purchase.value.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })
-                ) : '',
-                purchase.paymentMethod,
-                purchase.customerName,
-                purchase.customerCpf,
-                purchase.customerBadge,
-                formatDateTime(purchase.date),
-              ]),
-              ['Total', purchases.length > 0 && purchases[0].totalValue ? (
-                purchases[0].totalValue.toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })
-              ) : '', '', '', '', '']
-            ],
-          },
-          layout: 'lightHorizontalLines',
-        },
-      ],
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-          alignment: 'center',
-          margin: [0, 0, 0, 20],
-        },
-      },
-    };
-
-    const pdfDoc = pdfMake.createPdf(docDefinition);
-
-    if (isPdfOpen) {
-      closePdf();
-    } else {
-      const pdfDoc = pdfMake.createPdf(docDefinition);
-      pdfDoc.getBlob((blob) => {
-        const objectURL = URL.createObjectURL(blob);
-        setPdfSrc(objectURL);
-        setIsPdfOpen(true);
-      });
-    }
-
-  };
-
   const closePdf = () => {
     setPdfSrc(null);
     setIsPdfOpen(false);
@@ -243,38 +179,37 @@ const Relatorio = () => {
   
 
   return (
-    <div className='container2'>
-      <h1 className="h1_table_title">Registro de compras {months.find(m => m.value === month)?.name} de {year}</h1>
-      <hr className='hr_line2'></hr>
-      <div className='date_select'>
+    <div className='flex flex-col justify-center items-center w-[100%] p-2'>
+      <h1 className="text-white text-center text-[30px] font-primary">Registro de compras {months.find(m => m.value === month)?.name} de {year}</h1>
+      <hr className='w-[35%] h-[1px] bg-green2 mt-4 mb-4 border-none'></hr>
+      <div className='flex flex-row justify-between items-center w-[95%] h-[40px] gap-14'>
         <div>
           <Calendario onChange={handleCalendarChange} />
         </div>
         <div>
-          {/* <button className="relatorio" onClick={viewPdf}>{isPdfOpen ? 'Fechar Visualização' : 'Visualizar PDF'}</button> */}
-          <button className="download" onClick={generatePdf}>Download PDF</button>
-          <button className="download2" onClick={downloadExcelSheet}>Download Excel</button>
+          <button className="w-[175px] h-[40px] text-white text-[15px] font-primary bg-green1 border-2 border-green2 rounded-[5px]" onClick={generatePdf}>Download PDF</button>
+          <button className="w-[175px] h-[40px] text-white text-[15px] font-primary bg-green1 border-2 border-green2 rounded-[5px] ml-[25px]" onClick={downloadExcelSheet}>Download Excel</button>
         </div>
 
       </div>
-      <div className='table_style'>
-        <table className="table_align">
+      <div className='w-[95%] h-[600px] m-8'>
+        <table className="w-[100%]">
           <thead>
-            <tr className='tr_title'>
-              <th className="th_title">ID</th>
-              <th className="th_title">Valor</th>
-              <th className="th_title">Método de Pagamento</th>
-              <th className="th_title">Nome da Colaborador</th>
-              <th className="th_title">CPF do Colaborador</th>
-              <th className="th_title">Crachá</th>
-              <th className="th_title">Data - Hora</th>
+            <tr className='inherit top-0 z-10'>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">ID</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">Valor</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">Método de Pagamento</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">Nome da Colaborador</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">CPF do Colaborador</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">Crachá</th>
+              <th className="bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2">Data - Hora</th>
             </tr>
           </thead>
           <tbody>
             {purchases.map((purchase) => (
               <tr className='tr_title2' key={purchase.id}>
-                <td className='td_title1'>{purchase.id}</td>
-                <td className='td_title2'>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{purchase.id}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>
                   {purchase.value ? (
                     parseFloat(purchase.value.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
                       style: 'currency',
@@ -282,36 +217,35 @@ const Relatorio = () => {
                     })
                   ) : ''}
                 </td>
-                <td className='td_title3'>{purchase.paymentMethod}</td>
-                <td className='td_title3'>{purchase.customerName}</td>
-                <td className='td_title4'>{purchase.customerCpf}</td>
-                <td className='td_title4'>{purchase.customerBadge}</td>
-                <td className='td_title5'>{formatDateTime(purchase.date)}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{purchase.paymentMethod}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{purchase.customerName}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{purchase.customerCpf}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{purchase.customerBadge}</td>
+                <td className='bg-grey5 text-white text-center font-primary p-3 border-b-[1px] border-grey3'>{formatDateTime(purchase.date)}</td>
               </tr>
             ))}
           </tbody>
           <thead>
-            <tr className='tr_title_total'>
-            <th className='th_title'>Total</th>
-              <th className='th_total'>
+            <tr className='inherit bottom-0 z-100 border-t-3 bg-grey3'>
+            <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'>Total</th>
+              <th className='bg-grey5 text-white text-[20px] font-primary'>
                 {purchases.length > 0 && purchases[0].totalValue ? (
                     parseFloat(purchases[0].totalValue.replace('$', '').replace(',', '.')).toLocaleString('pt-BR', {
                       style: 'currency',
                       currency: 'BRL',
                     })
                   ) : ''}
-                <hr className='hr_line'></hr>
+                <hr className='w-[70%] h-[1px] bg-green2 mt-1 ml-auto mb-1 mr-auto border-none'></hr>
               </th>
-              <th className='th_total'></th>
-              <th className='th_total'></th>
-              <th className='th_total'></th>
-              <th className='th_total'></th>
-              <th className='th_total'></th>
+              <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'></th>
+              <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'></th>
+              <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'></th>
+              <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'></th>
+              <th className='bg-grey3 bg-opacity-100 text-white text-[20px] font-primary p-2'></th>
             </tr>
           </thead>
         </table>
       </div>
-      {pdfSrc && <iframe src={pdfSrc} title="PDF Viewer" className='pdf_iframe'></iframe>}
     </div>
   );
 };

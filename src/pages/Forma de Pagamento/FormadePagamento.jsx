@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import './styles.css'
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 
@@ -74,12 +73,12 @@ const FormadePagamento = () => {
     };
 
         return(
-            <div className="align-inicial-pag">
+            <div className="w-fulll h-[90vh] flex flex-col justify-center items-center gap-10 mx-auto my-auto">
                 {paymentMethods.map((method) => (
                 <button
                     key={method.id}
                     type="button"
-                    className={`clique button-${method.method.toLowerCase()}`}
+                    className={`clique bg-green1 w-[450px] h-[120px] text-white text-[25px] rounded-[15px] font-primary ${method.method.toLowerCase()}`}
                     onClick={() => {
                         selecionarFormaPagamento({ id: method.id, nome: method.method });
                         handleButtonClick(method);

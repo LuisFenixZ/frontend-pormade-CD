@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import './styles.css';
 import Swal from "sweetalert2";
 import QrCodePix from "../../img/qrCodeCantina.png";
 import { useNavigate } from "react-router-dom";
@@ -128,22 +127,22 @@ const PagamentoQR = () => {
     
     
     return (
-        <div>
-            <h1 className="cad__h2__title">Informações de Pagamento</h1>
-            <div className="container-pix">
-                <div className="p-text-pix">
-                    <p className="info_text">Nome: {customerData.name}</p>
-                    <p className="info_text">Crachá: {customerData.badge}</p>
-                    <p className="info_text">Valor: {parseFloat(customerData.value).toLocaleString('pt-BR', {
+        <div className="md:w-[90%] md:h-[90vh] xl:w-[20%] xl:h-[90vh] flex flex-col justify-center items-center gap-10 mx-auto my-auto md:mt-4 xl:mt-1">
+            <h1 className="text-white md:text-[30px] xl:text-[25px] md:mt-4 font-primary">Informações de Pagamento</h1>
+            <div className="w-[100%] flex flex-col justify-center items-center border-2 border-green2 rounded-[10px] p-4">
+                <div className="md:w-[90%] xl:w-[70%] flex flex-col float-left">
+                    <p className="text-white md:text-[20px] xl:text-[18px] font-primary">Nome: {customerData.name}</p>
+                    <p className="text-white md:text-[20px] xl:text-[18px] font-primary">Crachá: {customerData.badge}</p>
+                    <p className="text-white md:text-[20px] xl:text-[18px] font-primary">Valor: {parseFloat(customerData.value).toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL'
                         })}
                     </p>
-                    <p className="info_text">Método de Pagamento: {customerData.paymentMethod}</p>
+                    <p className="text-white text-[20px] xl:text-[18px] font-primary">Método de Pagamento: {customerData.paymentMethod}</p>
                 </div>
-                <img src={QrCodePix} alt="qr code cantina" className="pix_qrcode"></img>
+                <img src={QrCodePix} alt="qr code cantina" className="md:w-[90%] xl:w-[70%] md:m-4 xl:m-2"></img>
             </div>
-            <button type="button" className="button_confirm clique" onClick={confirmarCompra}>Confirmar</button>
+            <button type="button" className="md:w-[100%] xl:w-[100%] md:h-[150px] xl:h-[100px] rounded-[10px] bg-green1 text-white text-[30px] font-primary" onClick={confirmarCompra}>Confirmar</button>
         </div>
     );
 };

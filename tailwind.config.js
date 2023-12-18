@@ -13,12 +13,15 @@ export default {
         green2: "#3CB62C",
         'grey1': '#0a0a0a',
         'grey2': '#212121',
+        'grey3': 'rgb(41 41 41)',
         cartmessage: "#8C8C8C"
       },
       backgroundColor:{
         'grey1': '#0a0a0a',
         'grey2': '#212121',
         'grey3': 'rgb(41 41 41)',
+        'grey4': '#191919',
+        'grey5': '#0c0c0c',
         'green1': '#509D46',
         'green2': '#3CB62C',
       },

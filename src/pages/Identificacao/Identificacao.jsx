@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Numpad from '../../components/Keypad/numpad';
-import "../../components/Keypad/styles.css";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
@@ -83,22 +82,20 @@ function IdentificacaoComponent() {
         .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 
     return (
-        <main>
-            <h2 className="payment__h2__title">Digite o Número do seu CPF:</h2>
-            <div>
-                <div className='display-keyboard'>
-                    <div className='align-display'>
-                        <div className='result'>
-                            {formattedCPF || '0'}
-                        </div>
-                        <div>
-                            <Numpad onKeyPress={changeCPF} />
-                        </div>
+        <div className='flex flex-col justify-center items-center gap-6'>
+            <h2 className="text-white text-[35px] text-center font-primary mt-10">Digite o Número do seu CPF:</h2>
+            <div className='flex flex-col justify-center items-center w-[80%] border-2 border-green2 rounded-[10px]'>
+                <div className='w-[90%] flex flex-col justify-center items-center'>
+                    <div className='flex flex-row justify-center items-center w-[90%] h-[80px] text-white text-[50px] border-2 border-green2 rounded-[10px] mt-5'>
+                        {formattedCPF || '0'}
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <Numpad onKeyPress={changeCPF} />
                     </div>
                 </div>
-                <button className="button-continue" onClick={avancaValor}>Continuar</button>
             </div>
-        </main>
+            <button className="flex justify-center items-center w-[80%] h-[120px] text-white text-[30px] font-primary bg-green2 rounded-[10px]" onClick={avancaValor}>Continuar</button>
+        </div>
     );
 }
 

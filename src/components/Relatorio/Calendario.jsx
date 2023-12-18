@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import "./calendario.css"
 
 const Calendario = ({ onChange }) => {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
@@ -34,18 +33,18 @@ const Calendario = ({ onChange }) => {
 
 
   return (
-    <div className='align_calendar'>
-      <h1 className='h1_calendar'>Mês:</h1>
-      <select className="month" id="month" value={selectedMonth} onChange={handleMonthChange}>
+    <div className='flex justify-between items-center'>
+      <h1 className='text-white text-[20px] text-center font-primary mr-[5%]'>Mês:</h1>
+      <select className="w-[50%] h-[40px] text-white text-center font-primary bg-grey3 border-2 border-green2 rounded-[5px] outline-none" id="month" value={selectedMonth} onChange={handleMonthChange}>
         {months.map((month) => (
           <option key={month.value} value={month.value}>
             {month.name}
           </option>
         ))}
       </select>
-      <h1 className='h1_year'>Ano:</h1>
+      <h1 className='text-white text-[20px] text-center font-primary ml-[5%] mr-[3%]'>Ano:</h1>
       <input
-        className='yyear'
+        className='w-[30%] h-[40px] text-white text-center font-primary bg-grey3 border-2 border-green2 rounded-[5px] outline-none'
         type="number"
         id="year"
         value={selectedYear}

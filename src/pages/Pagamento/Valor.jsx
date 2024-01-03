@@ -45,10 +45,10 @@ function KeypadValueComponent() {
 
     return (
         <div className='flex flex-col justify-center items-center gap-6'>
-            <h1 className="text-white text-[35px] text-center font-primary mt-10">Digite o valor a pagar:</h1>
-            <div className='flex flex-col justify-center items-center w-[80%] border-2 border-green2 rounded-[10px]'>
-                <div className='w-[90%] flex flex-col justify-center items-center'>
-                    <div className='flex flex-row justify-center items-center w-[90%] h-[80px] text-white text-[50px] border-2 border-green2 rounded-[10px] mt-5'>
+            <h1 className="text-white text-[35px] text-center font-primary mt-2 md:mt-10 xl:mt-10">Digite o valor a pagar:</h1>
+            <div className='flex flex-col justify-center items-center w-[70%] border-2 border-green2 rounded-[10px] mt-[-14px]'>
+                <div className='w-[100%] flex flex-col justify-center items-center'>
+                    <div className='flex flex-row justify-center items-center w-[90%] h-[80px] text-white text-[50px] border-2 border-green2 rounded-[10px] mt-3 md:mt-5 xl:mt-5'>
                         {formattedValue}
                     </div>
                     <div className='flex justify-center items-center'>
@@ -56,7 +56,7 @@ function KeypadValueComponent() {
                     </div>
                 </div>
             </div>
-            <button className="flex justify-center items-center w-[80%] h-[120px] text-white text-[30px] font-primary bg-green2 rounded-[10px]" onClick={avancaPag}>Continuar</button>
+            <button className="flex justify-center items-center w-[70%] h-[100px] md:w-[70%] md:h-[120px] xl:w-[70%] xl:h-[120px] text-white text-[30px] font-primary bg-green2 rounded-[10px]" onClick={avancaPag}>Continuar</button>
         </div>
     );
 }
